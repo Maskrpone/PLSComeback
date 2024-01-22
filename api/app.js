@@ -8,8 +8,20 @@ let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let testRouter = require('./routes/test');
 
-
+let mongoose = require('mongoose')
 let app = express();
+
+// Connect to MongoDB
+mongoose.connect('mongodb://admin:bJno%5E5PYpvXzbt6s!%257jfNt9g%25NZk%26%25%26@localhost:27017/', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
