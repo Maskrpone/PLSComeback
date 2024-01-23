@@ -68,10 +68,14 @@ const Page_components=()=>{
                     <table
                         className="min-w-96 mx-auto w-16 md:w-32 lg:w-96 border-amber-100 border-solid border-2 rounded-xl overflow-auto">
                         <thead className="min-w-80 outline outline-amber-100">
-                        <tr className="flex center mb-4 ml-12 mr-10 text-blue-700">
-                            <th className="flex float-left text-blue-700">Image</th>
-                            <th className="float-right flex-col">Name</th>
-                            <th className="float-right flex-col"><br/>Stock</th>
+                        <tr className="flex w-full center mb-4 ml-12 mr-10">
+                            <th className="flex float-left">Image</th>
+                        <div className="flex  w-full float-right pl-36 ">
+                            <th className="flex float-right">Name </th>
+                            <th className="lg:hidden">/</th>
+                            <th className="flex float-right">Stock</th>
+                            </div>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -82,7 +86,7 @@ const Page_components=()=>{
                         ) : (
                             filteredUsers.map((user, index) => (
                                 <tr key={index} className="block mb-4">
-                                    <td className="block float-right">
+                                    <td className="block float-left">
                                         <img className="max-w-36 m-3" src={user.image} alt={'img of ' + user.nom}/>
                                     </td>
                                     <td className="block text-right">
