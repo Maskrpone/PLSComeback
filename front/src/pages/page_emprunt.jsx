@@ -3,32 +3,22 @@ import "./../App.css";
 import {Link} from "react-router-dom";
 
 const Page_emprunt=()=>{
-    let admin = true;
-
     const [searchTerm, setSearchTerm] = useState('');
 
-    const incrementTaille = (user) => {
-        return { ...user, taille: user.taille + 1 };
-    };
-
-    const decrementTaille = (user) => {
-        return { ...user, taille: user.taille - 1 };
-    };
 
     const [users, setUsers] = useState([
-        new User("John Doe", "https://s1.qwant.com/thumbr/474x316/b/c/bc07ef2694c1bc2f76637048afa4df34edd3acb18a8deb3ef4ea52ee266798/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.XtoYWt-dH39rCPkTkdoe8AHaE8%26pid%3DApi&q=0&b=1&p=0&a=0", 175),
-        new User("Jane Smith", "https://s1.qwant.com/thumbr/474x316/b/c/bc07ef2694c1bc2f76637048afa4df34edd3acb18a8deb3ef4ea52ee266798/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.XtoYWt-dH39rCPkTkdoe8AHaE8%26pid%3DApi&q=0&b=1&p=0&a=0", 160),
-        new User("Bob Johnson", "https://s1.qwant.com/thumbr/474x316/b/c/bc07ef2694c1bc2f76637048afa4df34edd3acb18a8deb3ef4ea52ee266798/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.XtoYWt-dH39rCPkTkdoe8AHaE8%26pid%3DApi&q=0&b=1&p=0&a=0", 185)
+        new User("Raspberry", "1", "20/05/2023", "21/05/2023"),
+        new User("Microcontroleur", "2", "26/08/2023", "26/08/2023"),
+        new User("Perceuse", "3", "07/11/2023", "13/11/2023")
     ]);
-
-    const handleClick = (str) => {
-        console.log(str);
-    };
 
 
     const filteredUsers = users.filter(user =>
-        user.nom.toLowerCase().includes(searchTerm.toLowerCase())
+        user.ID.includes(searchTerm)
+        + user.nom_objet.toLowerCase().includes(searchTerm.toLowerCase())
+        + user.date_prevu.includes(searchTerm)
     );
+
 
     return (
         <div className="App">
@@ -68,15 +58,15 @@ const Page_emprunt=()=>{
                     <table
                         className="min-w-96 lg:w-full mx-auto w-16 md:w-32 border-amber-100 border-solid border-2 rounded-xl overflow-auto">
                         <thead className="min-w-80 outline outline-amber-100">
-                        <tr className="flex lg:w-11/12 center mb-4 ml-12 mr-10 lg:flex-none">
+                        <tr className="flex  center mb-4 ml-12 mr-10 lg:flex-none">
 
-                            <th className="flex float-left lg:w-1/3 lg:float-none lg:flex">Image</th>
+                            <th className="flex float-left lg:w-1/3 lg:float-none lg:flex">Product name</th>
 
                             <div className="flex  w-full float-right pl-36 lg:w-9/12 lg:pl-0 lg:flex-none lg:justify-start">
 
-                                <th className="flex float-right lg:w-1/3 lg:justify-center lg:float-none lg:flex-auto">Name </th>
+                                <th className="flex float-right lg:w-1/3 lg:justify-center lg:float-none lg:flex-auto">ID</th>
                                 <th className="lg:hidden">/</th>
-                                <th className="flex float-right lg:w-1/3 lg:float-none lg:justify-end lg:flex-auto">Stock</th>
+                                <th className="flex float-right lg:w-1/3 lg:float-none lg:justify-end lg:flex-auto">Return date</th>
 
                             </div>
 
@@ -90,35 +80,29 @@ const Page_emprunt=()=>{
                         ) : (
                             filteredUsers.map((user, index) => (
                                 <tr key={index} className="block mb-4 lg:flex lg:w-full">
-                                    <td className="block float-left lg:flex-auto lg:w-1/3">
-                                        <img className="max-w-36 m-3" src={user.image} alt={'img of ' + user.nom}/>
+                                    <td className="block float-left text-left pl-10 lg:flex-auto lg:w-1/3">
+                                        <p className="min-w-96 mr-5 lg:min-w-0 lg:mr-0 ">
+                                            {user.nom_objet}
+                                        </p>
                                     </td>
                                     <td className="block text-right lg:flex-auto lg:text-center lg:w-1/3">
-                                        <p className="min-w-96 mr-5 lg:min-w-0 lg:mr-0 "><br/>{user.nom}</p>
+                                        <p className="min-w-96 mr-5 lg:min-w-0 lg:mr-0 ">
+                                            {user.ID}
+                                        </p>
                                     </td>
                                     <td className="lg:justify-center block text-right lg:flex-auto lg:w-1/3">
-                                        <p className="min-w-96 lg:min-w-0">
-                                            {admin === true ?
-                                                (<button onClick={() => setUsers(prevUsers => {
-                                                        const updatedUsers = [...prevUsers];
-                                                        updatedUsers[index] = incrementTaille(user);
-                                                        return updatedUsers;
-                                                    })} className="bg-amber-500 rounded-full min-w-8 text-center m-3"> +
-                                                    </button>
-                                                ) : ('')}
+                                        {user.date_reelle > user.date_prevu ?
+                                            (
+                                                <p className="min-w-96 lg:min-w-0 lg:pr-8 text-red-600">
+                                                    {user.date_reelle} ({user.date_prevu})
+                                                </p>
+                                            ): (
+                                                <p className="min-w-96 lg:min-w-0 lg:pr-8">
+                                                    {user.date_reelle}
+                                                </p>
+                                            )
+                                        }
 
-
-                                            {user.taille}
-
-                                            {admin === true ?
-                                                (<button onClick={() => setUsers(prevUsers => {
-                                                        const updatedUsers = [...prevUsers];
-                                                        updatedUsers[index] = decrementTaille(user);
-                                                        return updatedUsers;
-                                                    })} className="bg-amber-500 rounded-full min-w-8 text-center m-3"> -
-                                                    </button>
-                                                ) : ('')}
-                                        </p>
 
                                     </td>
                                 </tr>
@@ -126,13 +110,6 @@ const Page_emprunt=()=>{
                         )}
                         </tbody>
                     </table>
-                    {admin === true ?
-                        (
-                            <button onClick={() => handleClick(users)}
-                                    className="w-full lg:relative lg:float-right lg:w-60 bg-amber-500 border-4 border-amber-500 rounded-xl mt-4">Update
-                                stock
-                            </button>
-                        ) : ('')}
                 </div>
                 <br/><br/>
             </header>
@@ -140,10 +117,11 @@ const Page_emprunt=()=>{
     );
 }
 
-function User(nom, image, taille) {
-    this.nom = nom;
-    this.image = image;
-    this.taille = taille;
+function User(nom_objet, ID, date_prevu, date_reelle) {
+    this.nom_objet = nom_objet;
+    this.ID = ID;
+    this.date_prevu = date_prevu;
+    this.date_reelle = date_reelle;
 }
 
 export default Page_emprunt
