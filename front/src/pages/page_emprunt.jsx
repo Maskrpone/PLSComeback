@@ -2,7 +2,7 @@ import React,{ useState } from 'react';
 import "./../App.css";
 import {Link} from "react-router-dom";
 
-const Page_components=()=>{
+const Page_emprunt=()=>{
     let admin = true;
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -146,4 +146,4 @@ function User(nom, image, taille) {
     this.taille = taille;
 }
 
-export default Page_components
+export default Page_emprunt
