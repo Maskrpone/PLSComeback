@@ -17,7 +17,8 @@ router.get("/", async (req, res) => {
 router.get("/:name", async (req, res) => {
   try {
     const tool = await Tools.findOne({ name: req.params["name"] });
-    res.json(tool);
+    //res.json(tool);
+    (tool == null) ? res.status(404).send() : res.json(tool);
   } catch (error) {
     console.error(error);
     res.status(501).send("Internal Server Error");

@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/:name", async (req, res) => {
   try {
     const user = await Users.findOne({ username: req.params["name"] });
-    res.json(user);
+    (user == null) ? res.status(404).send() : res.json(user);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
