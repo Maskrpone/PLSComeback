@@ -16,11 +16,25 @@ router.get("/", async (req, res) => {
 // Obtenir un utilisateur par son username
 router.get("/:name", async (req, res) => {
   try {
-    const user = await Users.findOne({ name: req.params["name"] });
+    const user = await Users.findOne({ username: req.params["name"] });
     res.json(user);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
+  }
+});
+
+// Créer un utilisateur
+router.post("/", async (req, res) => {
+  try {
+    const newUser = new Users(req.body);
+    const savedUser = await newUser.save();
+    res
+      .status(200)
+      .json({ message: "Utilisateur ajouté avec succès", user: savedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur interne du serveur");
   }
 });
 
