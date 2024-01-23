@@ -34,4 +34,26 @@ router.post("/", async (req, res) => {
   }
 });
 
+// modifier la quantité d'un consommable
+
+router.put("/:name/modify", async (req, res) => {
+  try {
+    const { name } = req.params;
+    const { quantity } = req.body;
+
+    // recherche de l'élément à l'aide de son nom
+    const updateSupply = await Supplies.findOneAndUpdate(
+      { name: name },
+      { $set: { quantity: quantity } },
+      { new: true },
+    );
+
+    if (!updateSupply) return res.status(403).send("Élément non trouvé");
+    res.status(201).json(updateSupply);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 module.exports = router;
