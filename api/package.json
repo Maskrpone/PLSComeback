@@ -16,5 +16,8 @@
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
     "www": "^0.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
   }
 }
