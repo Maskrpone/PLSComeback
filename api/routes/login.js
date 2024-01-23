@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 let Users = require('../models/users');
 const { createHash } = require('crypto');
+const bcrypt = require("bcrypt")
 
 
 // Hash un string en sha256
