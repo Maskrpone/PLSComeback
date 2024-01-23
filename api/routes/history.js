@@ -1,12 +1,12 @@
 let express = require("express");
 let router = express.Router();
 let History = require("../models/history");
+/*
 let Machines = require("../models/machines");
 let Supplies = require("../models/supplies");
 let Tools = require("../models/tools");
-
-var ObjectId = require('mongoose').Types.ObjectId; 
-
+let ObjectId = require('mongoose').Types.ObjectId; 
+*/
 // Route pour obtenir toutes les machines
 
 router.get("/", async (req, res) => {
