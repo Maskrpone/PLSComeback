@@ -1,13 +1,13 @@
 let express = require("express");
 let router = express.Router();
-let Tools = require("../models/machines");
+let Machines = require("../models/machines");
 
 // Route pour obtenir toutes les machines
 
 router.get("/", async (req, res) => {
   try {
-    const tools = await Tools.find();
-    res.json(tools);
+    const machines = await Machines.find();
+    res.json(machines);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
@@ -17,8 +17,8 @@ router.get("/", async (req, res) => {
 // Obtenir une machine par son nom
 router.get("/:name", async (req, res) => {
   try {
-    const tool = await Tools.findOnes({ name: req.params["name"] });
-    res.json(tool);
+    const machine = await Machines.findOne({ name: req.params["name"] });
+    res.json(machine);
   } catch (error) {
     console.error(error);
     res.status(501).send("Internal Server Error");

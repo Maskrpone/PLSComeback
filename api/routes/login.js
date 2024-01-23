@@ -18,7 +18,9 @@ router.get("/:username/:password", async (req, res) => {
       username: req.params["username"],
       passwd: hash(req.params["password"]),
     });
-    res.json(user);
+
+    (user == null) ? res.status(403).send('Invalid credentials or user does not exist') : res.json(user);
+  
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
@@ -32,7 +34,9 @@ router.post("/", async (req, res) => {
       username: req.body["username"],
       passwd: hash(req.body["password"]),
     });
-    res.json(user);
+  
+    (user == null) ? res.status(403).send('Invalid credentials or user does not exist') : res.json(user);
+    
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
