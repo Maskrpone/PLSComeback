@@ -31,62 +31,15 @@ router.get("/:name", async (req, res) => {
   }
 });
 
-// Obtenir le nom des objets empruntés par un membre (et la quantité)
-/*router.get("/objects/:name", async (req, res) => {
-  try {
-    const history = await History.findOne({username : req.params["name"]});
-    
-    // Récupère les ids des elements empruntés
-    const ids = history.toJSON()["history"];
-    let names = [];
-    for (let i = 0; i < ids.length; i++) {
-      let result = await Machines.findOne({_id: new ObjectId(ids[i])});
-      if (result == null) {
-        result = await Tools.findOne({_id: new ObjectId(ids[i])});
-      }
-
-      names.push(result.toJSON()['name']);
-    }
-    res.json(names);
-
-  } catch (error) {
-    console.error(error);
-    res.status(501).send("Internal Server Error");
-  }
-})*/
-
+// Obtenir les objets empruntés par un membre
 router.get("/objects/:name", async (req, res) => {
   try {
     const history = await History.findOne({ username: req.params["name"] });
 
     // Récupère les ids des éléments empruntés
-    const ids = history.toJSON()["history"];
+    const items = history.toJSON()['history']['items'];
 
-    let names = [];
-
-    for (let i = 0; i < ids.length; i++) {
-      let result;
-
-      // Recherche dans la collection Machines
-      result = await Machines.findOne({ _id: new ObjectId(ids[i]) });
-
-      // Si l'ID n'est pas trouvé dans Machines, recherche dans la collection Tools
-      if (result == null) {
-        result = await Tools.findOne({ _id: new ObjectId(ids[i]) });
-      }
-
-      // Si l'ID n'est pas trouvé dans Tools, recherche dans la collection Supplies
-      if (result == null) {
-        result = await Supplies.findOne({ _id: new ObjectId(ids[i]) });
-      }
-
-      // Si l'ID est trouvé dans l'une des collections, ajoute le nom à la liste
-      if (result != null) {
-        names.push(result.toJSON()['name']);
-      }
-    }
-
-    res.json(names);
+    res.json(items);
   } catch (error) {
     console.error(error);
     res.status(501).send("Internal Server Error");
