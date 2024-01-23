@@ -22,4 +22,24 @@ router.get("/:name", async (req, res) => {
   }
 });
 
+// Créer un nouveau consommable
+router.post("/", async (req, res) => {
+  try {
+    const newSupplie = new Supplies(req.body);
+    const savedSupplie = await newSupplie.save();
+    res
+      .status(200)
+      .json({ message: "Supplie successfully added", supplie: savedSupplie });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .send(
+        "Erreur interne du serveur, is your data structured as : {'name': ?(String), 'quantity': ?(Number)}",
+      );
+  }
+});
+
+// ajouter une quantité au
+
 module.exports = router;
