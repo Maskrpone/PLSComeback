@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // Replace with your MongoDB connection string
-const mongoURI = "mongodb://localhost:27017/Test";
+const mongoURI = "mongodb://localhost:27017/PlsComeBack";
 
 // Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -14,13 +14,13 @@ const userSchema = new mongoose.Schema({
 });
 
 // Create a Mongoose model based on the schema
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("users", userSchema);
 
 // Function to perform the MongoDB query
 async function performQuery() {
   try {
     // Perform the query (replace the query condition as needed)
-    const queryCondition = { name: "John" };
+    const queryCondition = { name: "Hippolyte" };
     const queryResult = await User.find(queryCondition);
 
     // Log or process the query result

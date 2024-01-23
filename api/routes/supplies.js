@@ -1,23 +1,21 @@
 let express = require("express");
 let router = express.Router();
-let Users = require("../models/users");
+let Supplies = require("../models/supplies");
 
-// Route pour obtenir tous les utilisateurs
 router.get("/", async (req, res) => {
   try {
-    const users = await Users.find();
-    res.json(users);
+    const supplies = await Supplies.find();
+    res.json(supplies);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
   }
 });
 
-// Obtenir un utilisateur par son username
 router.get("/:name", async (req, res) => {
   try {
-    const user = await Users.findOne({ name: req.params["name"] });
-    res.json(user);
+    const supplie = await Supplies.findOne({ name: req.params["name"] });
+    res.json(supplie);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");

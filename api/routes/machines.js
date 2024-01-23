@@ -1,26 +1,27 @@
 let express = require("express");
 let router = express.Router();
-let Users = require("../models/users");
+let Tools = require("../models/machines");
 
-// Route pour obtenir tous les utilisateurs
+// Route pour obtenir toutes les machines
+
 router.get("/", async (req, res) => {
   try {
-    const users = await Users.find();
-    res.json(users);
+    const tools = await Tools.find();
+    res.json(tools);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
   }
 });
 
-// Obtenir un utilisateur par son username
+// Obtenir une machine par son nom
 router.get("/:name", async (req, res) => {
   try {
-    const user = await Users.findOne({ name: req.params["name"] });
-    res.json(user);
+    const tool = await Tools.findOnes({ name: req.params["name"] });
+    res.json(tool);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Internal Server Error");
+    res.status(501).send("Internal Server Error");
   }
 });
 
