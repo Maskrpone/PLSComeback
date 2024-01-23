@@ -10,6 +10,7 @@ let loginRouter = require("./routes/login");
 let toolsRouter = require("./routes/tools");
 let machinesRouter = require("./routes/machines");
 let suppliesRouter = require("./routes/supplies");
+let historyRouter = require("./routes/history");
 
 let mongoose = require("mongoose");
 let app = express();
@@ -42,6 +43,7 @@ app.use("/login", loginRouter);
 app.use("/tools", toolsRouter);
 app.use("/machines", machinesRouter);
 app.use("/supplies", suppliesRouter);
+app.use("/history", historyRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
