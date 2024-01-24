@@ -12,6 +12,7 @@ const machinesRouter = require("./routes/machines");
 const suppliesRouter = require("./routes/supplies");
 const historyRouter = require("./routes/history");
 const reserveRouter = require("./routes/reserve");
+const returnRouter = require("./routes/return");
 
 const mongoose = require("mongoose");
 const app = express();
@@ -46,6 +47,8 @@ app.use("/machines", machinesRouter);
 app.use("/supplies", suppliesRouter);
 app.use("/history", historyRouter);
 app.use("/reserve", reserveRouter);
+app.use("/return", returnRouter);
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
 	next(createError(404));
