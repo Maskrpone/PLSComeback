@@ -1,57 +1,62 @@
 .header-container {
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  top: 0px;
-  width:100vw;
-  color: white;
-  background-color: #3f2a56;
+  position: relative;
+    display: flex;
+    justify-content: space-between;
+    top: 0px;
+    height: 10vh;
+    width: 100vw;
+    color: white;
+    background-color: #3f2a56;
 }
 
-.logo {
+.header-container .logo {
   position: absolute;
   top: 30px;
   left: 30px;
 }
 
-.titre {
+.header-container .titre {
   flex-grow: 1; /* Le titre prendra le plus d'espace disponible */
   text-align: center;
 }
 
-.boutonClient {
+.header-container .boutonClient {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-span.material-symbols-outlined {
+.header-container span.material-symbols-outlined {
   position: absolute;
   top: 30px;
   right: 30px;
 }
 
-.Lien{
+.header-container .Lien{
   color:white;
 }
 
 .footer-container {
   position: fixed;
-  display: flex;
-  justify-content: space-between;
-  bottom: 0px;
-  padding: 5px;
-  color: white;
-  background-color: #3f2a56;
+    display: flex;
+    justify-content: center;
+    bottom: 0px;
+    padding: 5px;
+    color: white;
+    background-color: #3f2a56;
+    width: 100vw;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
   }
   
-  .left-section {
+  .footer-container .left-section {
     flex: 1;
     text-align: left;
     font-size: 10px;
   }
   
-  .center-section {
+  .footer-container .center-section {
     display: flex;
     flex: 1 1;
     text-align: center;
@@ -61,19 +66,19 @@ span.material-symbols-outlined {
 
   }
   
-  .right-section {
+  .footer-container .right-section {
     flex: 1;
     text-align: left;
     font-size: 10px;
   }
   
-  .names,
-  .credit {
+  .footer-container  .names,
+  .footer-container  .credit {
     font-size: 6px;
     text-align: left;
   }
   
-  .disconnect-link {
+  .footer-container .disconnect-link {
     color: white;
     text-decoration: underline;
   }

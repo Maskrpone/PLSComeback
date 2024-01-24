@@ -4,8 +4,8 @@
   }
   .Picture {
     width: 100vw;
-    
-  }
+    height: 60vh;
+}
   .Picture h3{
     text-align: center;
   }
@@ -17,7 +17,7 @@
     align-items: center;
     align-content: center;
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
   }
   #root > div > div > div > div.slick-list > div img{
     width: 80%;
@@ -64,3 +64,7 @@
   
  
   
+  html .slick-dots {
+    position: absolute;
+    bottom: 100px;
+  }
