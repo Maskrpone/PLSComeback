@@ -88,40 +88,70 @@ function Signup() {
 			messErr = "Please fill in all the boxes";
 		}
 
+		// Vérification de l'existence du nom d'utilisateur
+		const checkUsernameAvailability = async () => {
+			try {
+				const response = await axios.get(
+					`http://${API_IP}:3000/users/${username}`,
+				);
+				// Si la requête réussit, cela signifie que le nom d'utilisateur existe déjà
+				return false;
+			} catch (error) {
+				// Si la requête échoue avec une erreur 404, cela signifie que le nom d'utilisateur est disponible
+				return (error.response.status === 404);
+			}
+		};
+
+		const addUser = async () => {
+			try {
+				// Vérification de l'existence du nom d'utilisateur
+				const isUsernameAvailable = await checkUsernameAvailability(username);
+
+				if (isUsernameAvailable) {
+					// Le nom d'utilisateur est disponible, ajouter le nouvel utilisateur
+					const data = qs.stringify({
+						username: username,
+						prenom: surname,
+						nom: name,
+						isAdmin: false,
+						mail: mail,
+						passwd: sha256(password),
+					});
+
+					const config = {
+						method: "post",
+						maxBodyLength: Infinity,
+						url: `http://${API_IP}:3000/users/`,
+						headers: {
+							"Content-Type": "application/x-www-form-urlencoded",
+						},
+						data: data,
+					};
+
+					const response = await axios.request(config);
+
+					console.log(JSON.stringify(response.data));
+
+					if (response.status === 200) {
+						navigate("/pages/next");
+					}
+				} else {
+					// Le nom d'utilisateur existe déjà, gérer en conséquence
+					setErrorMessage("This username is already taken");
+				}
+			} catch (error) {
+				console.log(error);
+				if (messErr !== "") {
+					console.log(API_IP);
+					setErrorMessage(messErr);
+				}
+			}
+		};
+
 		//S'il y a une erreur on l'affiche sinon on se connecte
 		if (messErr === "") {
-
-		  const data = qs.stringify({
-				username: username,
-				prenom: surname,
-				nom: name,
-				isAdmin: false,
-				mail: mail,
-				passwd: sha256(password),
-			});
-
-			const config = {
-				method: "post",
-				maxBodyLength: Infinity,
-				url: `http://${API_IP}:3000/users/`,
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded",
-				},
-				data: data,
-			};
-
-			axios
-				.request(config)
-				.then((response) => {
-					console.log(JSON.stringify(response.data));
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-
-			navigate("/pages/next");
+      addUser();
 		} else {
-      console.log(API_IP);
 			setErrorMessage(messErr); // Met à jour le message d'erreur dans l'état local
 		}
 	};
