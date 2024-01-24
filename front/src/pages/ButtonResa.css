@@ -3,7 +3,11 @@ button {
    }
    html .slick-slide img {
       margin: auto;
+      width: 100vw;
    }
+   .slick-track {
+      height: 80vh;
+  }
    button.learn-more {
       top: 30px;
     margin: auto;

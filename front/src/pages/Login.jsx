@@ -53,7 +53,9 @@ function Login() {
   return (
     <div className='Loginform'>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-      <h1>PleaseComeBack</h1>
+      <div>
+          <h1>PleaseComeBack</h1>
+      </div>
       <div>
       <BoutonRetour url="/"/>
 

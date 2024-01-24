@@ -10,8 +10,15 @@
 }
 
 .Loginform h1 {
-    margin: 10vh 0px;
+    background: #3b2c53;
+    color: white;
+    border: 0px solid black;
+    width: 100vw;
+    text-align: center;
+    padding: 10px 0px;
+    margin-bottom: 20px;
 }
+
 
 .Loginform>div {
     width: 65vw;
@@ -36,4 +43,7 @@
     border-radius: 20px;
     width: 40px;
     position: absolute;
+}
+span.material-symbols-outlined {
+    line-height: 1.6;
 }
