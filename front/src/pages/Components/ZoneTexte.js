@@ -19,7 +19,7 @@ function ZoneSaisieTexte({ label, onChange }) {
         type="text"
         value={valeur}
         onChange={handleChange}
-        placeholder={`Enter the ${label.toLowerCase()}`}
+        placeholder={`Your ${label.toLowerCase()}`}
         style={{ width: '100%', padding: '5px', marginTop: '5px', border: 'none', borderBottom: '1px solid #ccc' }}
       />
     </div>
