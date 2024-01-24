@@ -4,15 +4,15 @@ import {Link} from "react-router-dom";
 function tableClientEmprunt (){
     return(
         <div class="TableClient"id="tableClientEmprunt">
-           <h3> Emprunt</h3>
+           <h3> LOAN</h3>
             <table>
                 <thead>
                 <tr>
                     <th>DATE</th>
-                    <th>DATE DE RENDU</th>
-                    <th>NOM</th>
-                    <th>RETARD</th>
-                    <th> GENERER QR CODE</th>
+                    <th>DELIVERY DATE</th>
+                    <th>NAME</th>
+                    <th>DELAY</th>
+                    <th> GENERATE QR CODE</th>
                 </tr>
                 </thead>
                 <tbody>

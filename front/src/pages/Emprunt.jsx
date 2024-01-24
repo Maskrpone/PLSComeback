@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Emprunt.css"
+import BoutonRetour from "./Components/BoutonRetour";
+import React from "react";
 
 
 function Emprunt() {
@@ -22,9 +24,11 @@ function Emprunt() {
 
     return (
         <>
+
             <header>
                 <h1> Tool rental </h1>
             </header>
+
             <div id="wrapper">
                 {pictures.map((picture, index) => (
                     <div key={index} className="card" >

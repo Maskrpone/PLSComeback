@@ -4,13 +4,13 @@ import {Link} from "react-router-dom";
 function TableClientConsommable (){
     return(
         <div class="TableClient"id="TableClientConsommable">
-            <h3>CONSOMMABLES</h3>
+            <h3>CONSUMABLES</h3>
             <table>
                 <thead>
                 <tr>
                 <th>DATE</th>
-                <th>NOM</th>
-                <th>QUANTITE</th>
+                <th>NAME</th>
+                <th>QUANTITY</th>
                 
                 </tr>
                 </thead>
