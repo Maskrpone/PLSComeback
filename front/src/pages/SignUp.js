@@ -91,7 +91,7 @@ function Signup() {
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
       <h1>PleaseComeBack</h1>
       <div>
-      <BoutonRetour />
+      <BoutonRetour url="/pages/login"/>
       <ZoneSaisieTexte label="Name " onChange={handleNameChange} />
       <ZoneSaisieTexte label="Surname " onChange={handleSurnameChange} />
       <ZoneSaisieTexte label="Mail " onChange={handleMailChange} />
@@ -101,12 +101,7 @@ function Signup() {
       {errorMessage && <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>}
       <BoutonSignUp onClick={handleSignUpClick} />
 
-        <BoutonRetour url="/pages/login"/>
-        <ZoneSaisieTexte label="Username " onChange={handleUsernameChange} />
-        <ZoneMotDePasse label="Password " text="New password" onChange={handlePasswordChange} />
-        <ZoneMotDePasse label="Confirm Password " text="Confirm your password" onChange={handlePasswordConfirmChange} />
-        {errorMessage && <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>}
-        <BoutonSignUp onClick={handleSignUpClick} />
+       
       </div>
     </div>
   );

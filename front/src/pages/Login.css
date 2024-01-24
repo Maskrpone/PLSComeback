@@ -29,5 +29,11 @@
 
 .buttonReturn {
     
-
+    left: 10px;
+    top: 10px;
+    border: 0px;
+    background: lightgray;
+    border-radius: 20px;
+    width: 40px;
+    position: absolute;
 }
