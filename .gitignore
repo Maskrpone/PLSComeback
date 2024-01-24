@@ -6,3 +6,4 @@ server/api/node_modules/*
 server/db/*
 server/api/node_modules/*
 Font/node_modules/*
+api/node_modules/*
