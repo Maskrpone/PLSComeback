@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 function tableClientMachines (){
     return(
         <div class="TableClient"id="tableClientMachines">
-            MACHINES
+            <h3>MACHINES</h3>
             <table>
                 <thead>
                 <tr>
@@ -18,6 +18,18 @@ function tableClientMachines (){
                     <td>CES-9000</td>
                     <td>50mt</td>
                     <td>9mm</td>
+                </tr>
+                <tr> 
+                    <td>CES-9000</td>
+                    <td>50mt</td>
+                    <td>9mm</td>
+                    <td>1/2"</td>
+                </tr>
+                <tr> 
+                    <td>CES-9000</td>
+                    <td>50mt</td>
+                    <td>9mm</td>
+                    <td>1/2"</td>
                 </tr>
                 </tbody>
             </table>
