@@ -15,15 +15,6 @@ router.get("/", async (req, res) => {
 
 // Obtenir un utilisateur par son username
 router.get("/:name", async (req, res) => {
-<<<<<<< Updated upstream
-  try {
-    const user = await Users.findOne({ username: req.params.name });
-    (user == null) ? res.status(404).send() : res.json(user);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
-=======
 	try {
 		const user = await Users.findOne({ username: req.params.name });
 		user == null ? res.status(404).send() : res.json(user);
@@ -31,7 +22,6 @@ router.get("/:name", async (req, res) => {
 		console.error(error);
 		res.status(500).send("Internal Server Error");
 	}
->>>>>>> Stashed changes
 });
 
 // Créer un utilisateur
