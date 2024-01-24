@@ -11,8 +11,8 @@
   }
   .Center {
     display: flex;
-    flex-direction:column;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     flex-wrap: nowrap;
     align-items: center;
     align-content: center;

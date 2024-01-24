@@ -8,8 +8,10 @@ import {Footer,Header} from "./Components/HeadFoot"
 
 function FicheClient(){
     return(
+        <>
+                    <Header/>
+
         <div id="ficheClient">
-            <Header/>
             <header>
                 <h1> Currently associated with your account </h1>
             </header>
@@ -19,8 +21,10 @@ function FicheClient(){
             <p>
                 <Link to="/">Continue booking</Link>
             </p>
-            <Footer/>
         </div>
+        <Footer/>
+
+        </>
     )
 }
 
