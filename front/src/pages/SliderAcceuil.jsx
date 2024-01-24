@@ -26,10 +26,10 @@ function SliderAcceuil({ pictures }) {
 
     const click = (type) => {
         switch (type) {
-            case 'Consommables':
+            case 'Consumables':
                 window.location.href = "/pages/pages_components";
                 break;
-            case 'Emprunt':
+            case 'Loan':
                 if (admin==true){
                     window.location.href = "/pages/pages_emprunt";
                     break;
