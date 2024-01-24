@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Emprunt.css"
+import {Footer,Header} from "./Components/HeadFoot"
+
 
 
 function Emprunt() {
@@ -22,6 +24,7 @@ function Emprunt() {
 
     return (
         <>
+            <Header/>
             <header>
                 <h1> Tool rental </h1>
             </header>
@@ -42,6 +45,7 @@ function Emprunt() {
                 ))}
 
             </div>
+            <Footer/>
         </>
     )
 }

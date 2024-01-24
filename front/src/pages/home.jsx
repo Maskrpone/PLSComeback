@@ -6,10 +6,13 @@ import './Slider.css'
 import './ButtonResa.css'
 import CalendarWidget from "./CalendarWidget";
 import SliderAcceuil from "./SliderAcceuil";
+import {Footer,Header} from "./Components/HeadFoot"
+
 
 function Home(){
     return(
         <>
+            <Header/>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
             <div className="Center">
@@ -26,6 +29,7 @@ function Home(){
             <Link to="/pages/ficheClient"> Fiche_client </Link>
             <Link to="/pages/pages_emprunt"> Emprunt </Link>
             <Link to="/pages/Login"> Login </Link>
+            <Footer/>
         </>
     )
 }

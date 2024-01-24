@@ -1,6 +1,8 @@
 import React,{ useState } from 'react';
 import "./../App.css";
 import {Link} from "react-router-dom";
+import {Footer,Header} from "./Components/HeadFoot"
+
 
 const Page_emprunt=()=>{
     const [searchTerm, setSearchTerm] = useState('');
@@ -22,6 +24,7 @@ const Page_emprunt=()=>{
 
     return (
         <div className="App">
+            <Header/>
             <header className="App-header">
                 <Link to="/"> home</Link>
                 <br/><br/>
@@ -113,6 +116,7 @@ const Page_emprunt=()=>{
                 </div>
                 <br/><br/>
             </header>
+            <Footer/>
         </div>
     );
 }
