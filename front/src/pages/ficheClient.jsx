@@ -11,13 +11,13 @@ function FicheClient(){
         <div id="ficheClient">
             <Header/>
             <header>
-                <h1> Actuellement associé à votre compte </h1>
+                <h1> Currently associated with your account </h1>
             </header>
             <TableClientConsommable></TableClientConsommable>
             <TableClientEmprunt></TableClientEmprunt>
             <TableClientMachines></TableClientMachines>
             <p>
-                <Link to="/">Continuer de réserver</Link>
+                <Link to="/">Continue booking</Link>
             </p>
             <Footer/>
         </div>

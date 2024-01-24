@@ -9,8 +9,8 @@ function tableClientMachines (){
                 <thead>
                 <tr>
                     <th>DATE</th>
-                    <th>NOM</th>
-                    <th>DUREE</th>
+                    <th>NAME</th>
+                    <th>DURATION</th>
                 </tr>
                 </thead>
                 <tbody>
