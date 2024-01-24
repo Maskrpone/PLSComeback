@@ -11,7 +11,7 @@ function ZoneSaisieTexte({ label, onChange }) {
   };
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px', margin: '10px', position: 'relative' }}>
+    <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px', margin: "40px 0px;", position: 'relative' }}>
       <label style={{ fontWeight: 'bold', position: 'absolute', top: '-10px', left: '10px', backgroundColor: '#fff', padding: '0 5px' }}>
         {label}:
       </label>

@@ -10,6 +10,7 @@ export function BoutonSignIn({onClick}) {
     <button
       style={{
         padding: '10px 20px',
+        width:'100%',
         border: '2px solid #333',
         borderRadius: '10px',
         backgroundColor: '#fff',

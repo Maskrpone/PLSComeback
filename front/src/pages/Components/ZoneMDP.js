@@ -17,7 +17,7 @@ function ZoneMotDePasse({ label, text, onChange }) {
   };
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px', margin: '10px', position: 'relative', display: 'flex', alignItems: 'center' }}>
+    <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px', margin: "40px 0px;", position: 'relative', display: 'flex', alignItems: 'center' }}>
       <label style={{ fontWeight: 'bold', position: 'absolute', top: '-10px', left: '10px', backgroundColor: '#fff', padding: '0 5px' }}>
         {label}:
       </label>

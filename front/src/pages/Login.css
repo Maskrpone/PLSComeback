@@ -1,0 +1,33 @@
+.Loginform {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Loginform h1 {
+    margin: 10vh 0px;
+}
+
+.Loginform>div {
+    width: 65vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: center;
+}
+
+.Loginform>div div {
+    margin: 10px 0px;
+}
+
+.buttonReturn {
+    
+
+}

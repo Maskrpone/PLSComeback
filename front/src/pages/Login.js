@@ -4,8 +4,8 @@ import ZoneSaisieTexte from './Components/ZoneTexte';
 import ZoneMotDePasse from './Components/ZoneMDP';
 import {BoutonSignIn} from './Components/Bouton';
 import { useNavigate } from 'react-router-dom';
-
-
+import "./Login.css"
+import BoutonRetour from './Components/BoutonRetour';
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -51,15 +51,21 @@ function Login() {
   }
 
   return (
-    <div className=''>
+    <div className='Loginform'>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
       <h1>PleaseComeBack</h1>
-      <ZoneSaisieTexte label="Username " onChange={handleUsernameChange} />
-      <ZoneMotDePasse label="Password " text="Enter your password" onChange={handlePasswordChange}/>
-      {errorMessage && <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>}
-      <BoutonSignIn onClick={handleSignInClick}/>
-      <p>If you don't have an account</p>
-      {/* On va vers la page signup en utilisant les routes qu'on a fait dans App.js*/}
-      <Link to="/pages/signup">click here to create one</Link>
+      <div>
+      <BoutonRetour url="/"/>
+
+        <ZoneSaisieTexte label="Username " onChange={handleUsernameChange} />
+        <ZoneMotDePasse label="Password " text="Enter your password" onChange={handlePasswordChange}/>
+        {errorMessage && <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>}
+        <BoutonSignIn onClick={handleSignInClick}/>
+        <p>If you don't have an account<br></br>
+        {/* On va vers la page signup en utilisant les routes qu'on a fait dans App.js*/}
+        <Link to="/pages/signup">click here to create one</Link>
+        </p>
+        </div>
     </div>
   );
 }
