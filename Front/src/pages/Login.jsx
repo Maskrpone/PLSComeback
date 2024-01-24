@@ -8,8 +8,8 @@ import "./Login.css";
 import BoutonRetour from "./Components/BoutonRetour";
 import axios from "axios";
 import qs from "qs";
-import sha256 from "js-sha256";
 import { API_IP } from "../Constants";
+import sha256 from "js-sha256";
 
 function Login() {
 	const navigate = useNavigate();
