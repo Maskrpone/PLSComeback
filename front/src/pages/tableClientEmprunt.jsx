@@ -12,6 +12,7 @@ function tableClientEmprunt (){
                     <th>DATE DE RENDU</th>
                     <th>NOM</th>
                     <th>RETARD</th>
+                    <th> GENERER QR CODE</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,6 +22,7 @@ function tableClientEmprunt (){
                     <td>9mm</td>
                     <td>1/2"</td>
                     <td>non</td>
+                    <td>LIEN A METTRE </td>
                 </tr>
                 </tbody>
             </table>
