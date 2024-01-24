@@ -15,6 +15,18 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  plannedReturnDate: {
+    type: String,
+    required: true,
+  },
+  realReturnDate: {
+    type: String,
+    required: true,
+  },
+  isLate: {
+    type: Boolean,
+    required: true,
+  }
 });
 
 const historySchema = new mongoose.Schema({

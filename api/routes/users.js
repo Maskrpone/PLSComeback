@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 // Obtenir un utilisateur par son username
 router.get("/:name", async (req, res) => {
   try {
-    const user = await Users.findOne({ username: req.params["name"] });
+    const user = await Users.findOne({ username: req.params.name });
     (user == null) ? res.status(404).send() : res.json(user);
   } catch (error) {
     console.error(error);

@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const Supplies = require("../models/supplies");
@@ -7,35 +7,48 @@ const Machines = require("../models/machines");
 const History = require("../models/history");
 const Users = require("../models/users");
 
-router.post("/:username/:name/:quantity", async (res, req) => {
- try {
+router.post("/", async (res, req) => {
+  try {
+    let collection = "";
+    let stocks = 0;
     // Check si l'username existe
-    let query = await Users.findOne({username: req.body.username});
-    const userExists = (query != null);
+    let query = await Users.findOne({ username: req.body.username });
+    if (!query) res.status(404).send("User not found");
 
     // Check si l'item existe (dans machines, tools, supplies)
-    query = await Supplies.findOne({name: req.body.name});
-    let itemExists = (query != null);
-
-    if (!itemExists) {
-      query = await Tools.findOne({name: req.body.name});
-      itemExists = (query != null);
+    query = await Supplies.findOne({ name: req.body.name });
+    if (query) {
+      collection = "Supplies";
+      stocks = query.quantity;
     }
 
-    if (!itemExists) {
-      query = await Machines.findOne({name: req.body.name});
-      itemExists = (query != null);
+    if (!query) {
+      query = await Tools.findOne({ name: req.body.name });
+
+      if (query) {
+        collection = "Tools";
+        stocks = query.InStock;
+      }
     }
-    // Check si la quantité est suffisante
-    
 
+    if (!query) {
+      query = await Machines.findOne({ name: req.body.name });
 
+      if (query) {
+        collection = "Machines";
+        stocks = query.InStock;
+      }
+    }
 
-    // Met à jour l'history pour l'user
- } catch (error) {
+    if (!query) res.status(404).send("Item not found");
+    if (stocks < req.body.quantity)
+      res.status(403).send("Not enough items in stock");
+
+    res.json([req.body.username, collection, stocks]);
+  } catch (error) {
     console.error(error);
-    res.status(503).send()
- }
+    res.status(503).send();
+  }
 });
 
 module.exports = router;
