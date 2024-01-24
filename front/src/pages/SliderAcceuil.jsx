@@ -63,7 +63,7 @@ function SliderAcceuil({ pictures }) {
                             <span className="circle" aria-hidden="true">
                             <span className="icon arrow"></span>
                             </span>
-                            <span className="button-text">Booking</span>
+                            <span className="button-text">GO</span>
                         </button>
 
                     </div>
