@@ -1,18 +1,19 @@
-let createError = require("http-errors");
-let express = require("express");
-let path = require("path");
-let cookieParser = require("cookie-parser");
-let logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-let indexRouter = require("./routes/index");
-let usersRouter = require("./routes/users");
-let loginRouter = require("./routes/login");
-let toolsRouter = require("./routes/tools");
-let machinesRouter = require("./routes/machines");
-let suppliesRouter = require("./routes/supplies");
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
+const loginRouter = require("./routes/login");
+const toolsRouter = require("./routes/tools");
+const machinesRouter = require("./routes/machines");
+const suppliesRouter = require("./routes/supplies");
+const historyRouter = require("./routes/history");
 
-let mongoose = require("mongoose");
-let app = express();
+const mongoose = require("mongoose");
+const app = express();
 
 // Connexion à la BDD "PlsComeBack"
 mongoose.connect("mongodb://localhost:27017/PlsComeBack");
@@ -42,14 +43,14 @@ app.use("/login", loginRouter);
 app.use("/tools", toolsRouter);
 app.use("/machines", machinesRouter);
 app.use("/supplies", suppliesRouter);
-
+app.use("/history", historyRouter);
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};

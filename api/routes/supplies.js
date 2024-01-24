@@ -1,6 +1,6 @@
-let express = require("express");
-let router = express.Router();
-let Supplies = require("../models/supplies");
+const express = require("express");
+const router = express.Router();
+const Supplies = require("../models/supplies");
 
 router.get("/", async (req, res) => {
   try {
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:name", async (req, res) => {
   try {
-    const supply = await Supplies.findOne({ name: req.params["name"] });
+    const supply = await Supplies.findOne({ name: req.params.name });
     supply == null ? res.status(404).send() : res.json(supply);
   } catch (error) {
     console.error(error);

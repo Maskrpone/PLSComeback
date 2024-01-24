@@ -1,29 +1,29 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-let Supplies = require("../models/supplies");
-let Tools = require("../models/tools");
-let Machines = require("../models/machines");
-let History = require("../models/history");
-let Users = require("../models/users");
+const Supplies = require("../models/supplies");
+const Tools = require("../models/tools");
+const Machines = require("../models/machines");
+const History = require("../models/history");
+const Users = require("../models/users");
 
 router.post("/:username/:name/:quantity", async (res, req) => {
  try {
     // Check si l'username existe
-    let query = await Users.findOne({username: req.body['username']});
-    let userExists = (query != null);
+    let query = await Users.findOne({username: req.body.username});
+    const userExists = (query != null);
 
     // Check si l'item existe (dans machines, tools, supplies)
-    query = await Supplies.findOne({name: req.body['name']});
+    query = await Supplies.findOne({name: req.body.name});
     let itemExists = (query != null);
 
     if (!itemExists) {
-      query = await Tools.findOne({name: req.body['name']});
+      query = await Tools.findOne({name: req.body.name});
       itemExists = (query != null);
     }
 
     if (!itemExists) {
-      query = await Machines.findOne({name: req.body['name']});
+      query = await Machines.findOne({name: req.body.name});
       itemExists = (query != null);
     }
     // Check si la quantité est suffisante

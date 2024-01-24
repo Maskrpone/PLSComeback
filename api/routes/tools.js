@@ -1,6 +1,6 @@
-let express = require("express");
-let router = express.Router();
-let Tools = require("../models/tools");
+const express = require("express");
+const router = express.Router();
+const Tools = require("../models/tools");
 
 // Route pour obtenir tous les utilisateurs
 router.get("/", async (req, res) => {

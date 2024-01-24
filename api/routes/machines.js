@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 // Obtenir une machine par son nom
 router.get("/:name", async (req, res) => {
   try {
-    const machine = await Machines.findOne({ name: req.params["name"] });
+    const machine = await Machines.findOne({ name: req.params.name });
     (machine == null) ? res.status(404).send() : res.json(machine);
   } catch (error) {
     console.error(error);
