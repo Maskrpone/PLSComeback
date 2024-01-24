@@ -57,7 +57,6 @@ function Login() {
           <h1>PleaseComeBack</h1>
       </div>
       <div>
-      <BoutonRetour url="/"/>
 
         <ZoneSaisieTexte label="Username " onChange={handleUsernameChange} />
         <ZoneMotDePasse label="Password " text="Enter your password" onChange={handlePasswordChange}/>
