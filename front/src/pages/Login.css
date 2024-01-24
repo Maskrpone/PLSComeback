@@ -44,3 +44,6 @@
     width: 40px;
     position: absolute;
 }
+span.material-symbols-outlined {
+    line-height: 1.6;
+}
