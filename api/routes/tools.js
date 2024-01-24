@@ -25,4 +25,18 @@ router.get("/:name", async (req, res) => {
   }
 });
 
+// Ajouter un outil
+router.post("/", async (req, res) => {
+  try {
+    const nouvelOutil = new Tools(req.body);
+    const outilEnregistre = await nouvelOutil.save();
+    res.status(201).json(outilEnregistre);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erreur Serveur" });
+  }
+});
+
+
+
 module.exports = router;

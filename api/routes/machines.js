@@ -25,4 +25,17 @@ router.get("/:name", async (req, res) => {
   }
 });
 
+// Ajouter une machine
+router.post("/", async (req, res) => {
+  try {
+    const newMachine = new Machines(req.body);
+    const savedMachine = await newMachine.save();
+    res.status(201).json(savedMachine);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erreur Serveur" });
+  }
+});
+
+
 module.exports = router;

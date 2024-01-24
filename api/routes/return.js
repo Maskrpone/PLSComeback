@@ -31,8 +31,12 @@ router.post("/", async (req, res) => {
     }
 
     if (!query) return res.status(404).send("Item not found");
-
     let newStock = await History.findOne({ username: req.body.username });
+
+    // Check si l'historique à une clée correspondand à req.body.name
+    if (!newStock.toJSON().history.items[req.body.name])
+      return res.status(404).send("Item not found in history");
+
     newStock = newStock.toJSON().history.items[req.body.name].quantity + stocks;
 
     // Update stock based on collection
