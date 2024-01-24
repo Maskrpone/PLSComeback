@@ -1,9 +1,9 @@
 //import React from 'react';
 import {Link} from "react-router-dom";
 
-function TableClientConsommable (){
+function tableClientEmprunt (){
     return(
-        <>
+        <div class="TableClient"id="tableClientEmprunt">
             Emprunt
             <table>
                 <thead>
@@ -24,8 +24,8 @@ function TableClientConsommable (){
                 </tr>
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 
-export default TableClientConsommable;
+export default tableClientEmprunt;

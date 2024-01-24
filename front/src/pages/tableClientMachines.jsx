@@ -1,9 +1,9 @@
 //import React from 'react';
 import {Link} from "react-router-dom";
 
-function TableClientConsommable (){
+function tableClientMachines (){
     return(
-        <>
+        <div class="TableClient"id="tableClientMachines">
             MACHINES
             <table>
                 <thead>
@@ -21,8 +21,8 @@ function TableClientConsommable (){
                 </tr>
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 
-export default TableClientConsommable;
+export default tableClientMachines;

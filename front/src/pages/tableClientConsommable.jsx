@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 function TableClientConsommable (){
     return(
-        <>
+        <div class="TableClient"id="TableClientConsommable">
             CONSOMMABLES
             <table>
                 <thead>
@@ -14,7 +14,7 @@ function TableClientConsommable (){
                 </tr>
                 </thead>
                 <tbody>
-                <tr> //pour chaque element de la bd
+                <tr> 
                     <td>CES-9000</td>
                     <td>50mt</td>
                     <td>9mm</td>
@@ -22,7 +22,7 @@ function TableClientConsommable (){
                 </tr>
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 
