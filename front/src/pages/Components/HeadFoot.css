@@ -11,8 +11,8 @@
 
 .header-container .logo {
   position: absolute;
-  top: 30px;
-  left: 30px;
+    top: 3vh;
+    left: 8vw;
 }
 
 .header-container .titre {
@@ -28,8 +28,8 @@
 
 .header-container span.material-symbols-outlined {
   position: absolute;
-  top: 30px;
-  right: 30px;
+    top: 3vh;
+    right: 8vw;
 }
 
 .header-container .Lien{
@@ -37,16 +37,17 @@
 }
 
 .footer-container {
-  position: fixed;
-    display: flex;
-    justify-content: center;
-    bottom: 0px;
-    padding: 5px;
-    color: white;
-    background-color: #3f2a56;
-    width: 100vw;
-    flex-direction: row;
-    flex-wrap: nowrap;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  bottom: 0px;
+  padding: 5px;
+  color: white;
+  background-color: #3f2a56;
+  width: 100vw;
+  height: 10Vh;
+  flex-direction: row;
+  flex-wrap: nowrap;
 
   }
   

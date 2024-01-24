@@ -9,8 +9,10 @@ import BoutonRetour from "./Components/BoutonRetour";
 
 function FicheClient(){
     return(
+        <>
+                    <Header/>
+
         <div id="ficheClient">
-            <Header/>
             <BoutonRetour url="/"/>
             <header>
                 <h1> Currently associated with your account </h1>
@@ -21,8 +23,10 @@ function FicheClient(){
             <p>
                 <Link to="/">Continue booking</Link>
             </p>
-            <Footer/>
         </div>
+        <Footer/>
+
+        </>
     )
 }
 
