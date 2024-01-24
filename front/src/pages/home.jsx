@@ -1,10 +1,12 @@
 import {Link} from "react-router-dom";
+import "./Emprunt.css"
 
-const Home=()=>{
+function Home(){
     return(
         <>
         <h1> This is Home page</h1>
-        <Link to="/pages/pages1"> pages1</Link>
+            <Link to="/pages/ficheClient"> fiche client</Link>
+            <Link to="/pages/Emprunt"> Emprunt</Link>
         <Link to="/pages/pages_components"> pages_components</Link>
             <Link to="/pages/pages_emprunt"> pages_emprunt</Link>
             <Link to="/pages/machines"> machine</Link>
@@ -13,4 +15,4 @@ const Home=()=>{
     )
 }
 
-export default Home
+export default Home;

@@ -1,21 +1,16 @@
+//import React from 'react';
 import {Link} from "react-router-dom";
 
-const Page1=()=>{
+function TableClientConsommable (){
     return(
         <>
-        <header>
-            <h1> This is page1</h1>
-            <Link to="/"> home</Link>
-        </header>
-
-
+            MACHINES
             <table>
                 <thead>
                 <tr>
-                    <th></th>
                     <th>DATE</th>
                     <th>NOM</th>
-                    <th>QUANTITE</th>
+                    <th>DUREE</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,12 +18,11 @@ const Page1=()=>{
                     <td>CES-9000</td>
                     <td>50mt</td>
                     <td>9mm</td>
-                    <td>1/2"</td>
                 </tr>
                 </tbody>
             </table>
-            </>
+        </>
     )
 }
 
-export default Page1
+export default TableClientConsommable;
