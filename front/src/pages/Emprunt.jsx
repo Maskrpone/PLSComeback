@@ -23,7 +23,7 @@ function Emprunt() {
     return (
         <>
             <header>
-                <h1> Emprunt d'outils </h1>
+                <h1> Tool rental </h1>
             </header>
             <div id="wrapper">
                 {pictures.map((picture, index) => (
