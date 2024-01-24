@@ -32,8 +32,8 @@ router.post("/", async (req, res) => {
 
     if (!query) return res.status(404).send("Item not found");
 
-    let newStock = await History.findOne({username: req.body.username});
-    newStock = newStock.toJSON().history.items[req.body.name].quantity + stocks; 
+    let newStock = await History.findOne({ username: req.body.username });
+    newStock = newStock.toJSON().history.items[req.body.name].quantity + stocks;
 
     // Update stock based on collection
     switch (collection) {
@@ -62,7 +62,7 @@ router.post("/", async (req, res) => {
         break;
     }
 
-    let historyItem = await History.findOne({username: req.body.username});
+    let historyItem = await History.findOne({ username: req.body.username });
     historyItem = historyItem.toJSON().history.items[req.body.name];
 
     await History.findOneAndUpdate(
