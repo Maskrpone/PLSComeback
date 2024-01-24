@@ -6,6 +6,9 @@ import Emprunt from "./pages/Emprunt";
 import PageComponents from "./pages/page_components";
 import PageEmprunt from "./pages/page_emprunt";
 import Machines from "./pages/machines";
+import Login from "./pages/Login"
+import Signup from "./pages/SignUp"
+import Next from "./pages/Next"
 
 function App() {
 
@@ -14,6 +17,9 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Home/>} />
+                <Route path="/pages/login" element={<Login />} />
+                <Route path="/pages/signup" element={<Signup />} />
+                <Route path="/pages/next" element={<Next/>}/>
                 <Route path="/pages/ficheClient" element={<FicheClient/>} />
                 <Route path="/pages/Emprunt" element={<Emprunt/>} />
                 <Route path="/pages/pages_components" element={<PageComponents/>} />

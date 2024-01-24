@@ -10,6 +10,7 @@ function Home(){
         <Link to="/pages/pages_components"> pages_components</Link>
             <Link to="/pages/pages_emprunt"> pages_emprunt</Link>
             <Link to="/pages/machines"> machine</Link>
+            <Link to="/pages/Login">Login</Link>
 
         </>
     )
