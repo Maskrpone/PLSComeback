@@ -1,0 +1,45 @@
+#ficheClient{
+    /* height: 100vh; */
+    margin: 20px;
+}
+h1{
+    font-size: 5vh;
+    margin: 1.25vh 0px;
+}
+h3{
+    padding: 5px 0px 0px 15px;
+}
+.TableClient{
+    border-radius: 5px;
+    margin: 15px 0px;
+    padding: 5px 0xp;
+}
+table{
+    border-spacing: 0px;
+}
+.TableClient table{
+    margin-left: 20px;
+}
+.TableClient th,.TableClient td{
+    border-right: 2px solid black   ;
+    padding: 4px;
+    font-weight: lighter;
+}
+#TableClientConsommable{
+    border-left: solid 5px #d5adf9
+;
+}
+
+#tableClientEmprunt{
+    border-left: solid 5px #efc194
+    ;
+}
+
+#tableClientMachines{
+    border-left: solid 5px #e2e2e2
+    ;
+
+}
+/* 
+
+*/

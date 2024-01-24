@@ -1,0 +1,86 @@
+.header-container {
+  position: relative;
+    display: flex;
+    justify-content: space-between;
+    top: 0px;
+    height: 10vh;
+    width: 100vw;
+    color: white;
+    background-color: #3f2a56;
+}
+
+.header-container .logo {
+  position: absolute;
+    top: 3vh;
+    left: 8vw;
+}
+
+.header-container .titre {
+  flex-grow: 1; /* Le titre prendra le plus d'espace disponible */
+  text-align: center;
+}
+
+.header-container .boutonClient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-container span.material-symbols-outlined {
+  position: absolute;
+    top: 3vh;
+    right: 8vw;
+}
+
+.header-container .Lien{
+  color:white;
+}
+
+.footer-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  bottom: 0px;
+  padding: 5px;
+  color: white;
+  background-color: #3f2a56;
+  width: 100vw;
+  height: 10Vh;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  }
+  
+  .footer-container .left-section {
+    flex: 1;
+    text-align: left;
+    font-size: 10px;
+  }
+  
+  .footer-container .center-section {
+    display: flex;
+    flex: 1 1;
+    text-align: center;
+    font-size: 10px;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .footer-container .right-section {
+    flex: 1;
+    text-align: left;
+    font-size: 10px;
+  }
+  
+  .footer-container  .names,
+  .footer-container  .credit {
+    font-size: 6px;
+    text-align: left;
+  }
+  
+  .footer-container .disconnect-link {
+    color: white;
+    text-decoration: underline;
+  }
+  
