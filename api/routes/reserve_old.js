@@ -9,34 +9,43 @@ const Users = require("../models/users");
 
 router.post("/", async (req, res) => {
 	try {
+		let collection = "";
+		let stocks = 0;
 		// Check si l'username existe
-		const user = await Users.findOne({ username: req.body.username });
-		if (!user) return res.status(404).send("User not found");
+		let query = await Users.findOne({ username: req.body.username });
+		if (!query) res.status(404).send("User not found");
 
 		// Check si l'item existe (dans machines, tools, supplies)
-		let query = await Supplies.findOne({ name: req.body.name });
-		let collection = "Supplies";
-		let stocks = query ? query.quantity : 0;
+		query = await Supplies.findOne({ name: req.body.name });
+		if (query) {
+			collection = "Supplies";
+			stocks = query.quantity;
+		}
 
 		if (!query) {
 			query = await Tools.findOne({ name: req.body.name });
-			collection = "Tools";
-			stocks = query ? query.InStock : 0;
+
+			if (query) {
+				collection = "Tools";
+				stocks = query.InStock;
+			}
 		}
 
 		if (!query) {
 			query = await Machines.findOne({ name: req.body.name });
-			collection = "Machines";
-			stocks = query ? query.InStock : 0;
+
+			if (query) {
+				collection = "Machines";
+				stocks = query.InStock;
+			}
 		}
 
-		if (!query) return res.status(404).send("Item not found");
+		if (!query) res.status(404).send("Item not found");
 		if (stocks < req.body.quantity)
-			return res.status(403).send("Not enough items in stock");
+			res.status(403).send("Not enough items in stock");
 
 		const newStock = stocks - req.body.quantity;
 
-		// Update stock based on collection
 		switch (collection) {
 			case "Supplies":
 				await Supplies.findOneAndUpdate(
@@ -58,37 +67,45 @@ router.post("/", async (req, res) => {
 					{ InStock: newStock },
 				);
 				break;
-
 			default:
 				break;
 		}
 
-		// Update or insert history item
+		const userHistory = await History.findOne({ username: req.body.username });
+
+		// Données à ajouter
 		const newItem = {
 			[req.body.name]: {
 				quantity: req.body.quantity,
 				date: new Date(),
-				plannedReturnDate: req.body.plannedReturnDate ? new Date(req.body.plannedReturnDate) : null,
+				plannedReturnDate: new Date(req.body.plannedReturnDate),
 				realReturnDate: null,
 				isLate: false,
 			},
 		};
 
-		await History.findOneAndUpdate(
-			{ username: req.body.username },
-			{
-				$set: {
-					[`history.items.${Object.keys(newItem)[0]}`]:
-						newItem[Object.keys(newItem)[0]],
+		// Utiliser findOneAndUpdate avec upsert: true
+		try {
+			// Utiliser findOneAndUpdate avec upsert: true et sans callback
+			const result = await History.findOneAndUpdate(
+				{ username: req.body.username },
+				{
+					$set: {
+						[`history.items.${Object.keys(newItem)[0]}`]:
+							newItem[Object.keys(newItem)[0]],
+					},
 				},
-			},
-			{ upsert: true },
-		);
+				{ upsert: true }, // Cette option crée le document s'il n'est pas trouvé
+			);
+
+			console.log("Document mis à jour avec succès !");
+		} catch (err) {
+			console.error(err);
+		}
 
 		res.send("DB updated");
 	} catch (error) {
 		console.error(error);
-		res.status(500).send("Internal Server Error");
 	}
 });
 
