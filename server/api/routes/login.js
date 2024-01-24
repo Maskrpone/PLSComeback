@@ -16,7 +16,7 @@ router.get("/:username/:password", async (req, res) => {
   try {
     const user = await Users.findOne({
       username: req.params.username,
-      passwd: hash(req.params.password),
+      passwd: req.params.password,
     });
 
     (user == null) ? res.status(403).send('Invalid credentials or user does not exist') : res.json(user);
@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
   try {
     const user = await Users.findOne({
       username: req.body.username,
-      passwd: hash(req.body.password),
+      passwd: req.body.password,
     });
   
     (user == null) ? res.status(403).send('Invalid credentials or user does not exist') : res.json(user);
