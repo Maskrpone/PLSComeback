@@ -4,3 +4,5 @@ server/api/node_modules/*
 
 # Database
 server/db/*
+server/api/node_modules/*
+Font/node_modules/*
