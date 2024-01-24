@@ -5,12 +5,15 @@ import 'slick-carousel/slick/slick-theme.css';
 import './Slider.css'
 import './Calendar.css'
 import './ButtonResa.css'
-//import {Footer} from "./Components/HeadFoot"
+import {Footer} from "./Components/HeadFoot"
 
+
+import Header from'./Components/Header.js'
 
 function Machines() {
   return (
   <>
+    <Header/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <div class="Center">
@@ -27,7 +30,7 @@ function Machines() {
        <CalendarWidget></CalendarWidget>
 
     </div>
-    {/* <Footer/> */}
+    <Footer/>
   </>
   );
 }
