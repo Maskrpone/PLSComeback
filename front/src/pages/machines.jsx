@@ -23,7 +23,7 @@ function Machines() {
 
             ]} /> 
 
-       {/* <CalendarWidget></CalendarWidget> */}
+       <CalendarWidget></CalendarWidget>
 
     </div>
     
