@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
 import qs from "qs";
-import sha256 from "../hash";
+import sha256 from "js-sha256";
+import { API_IP } from "../Constants";
 
 function Signup() {
 	const navigate = useNavigate();
@@ -89,6 +90,7 @@ function Signup() {
 
 		//S'il y a une erreur on l'affiche sinon on se connecte
 		if (messErr === "") {
+
 		  const data = qs.stringify({
 				username: username,
 				prenom: surname,
@@ -101,7 +103,7 @@ function Signup() {
 			const config = {
 				method: "post",
 				maxBodyLength: Infinity,
-				url: "127.0.0.1:3000/users/",
+				url: `http://${API_IP}:3000/users/`,
 				headers: {
 					"Content-Type": "application/x-www-form-urlencoded",
 				},
@@ -119,6 +121,7 @@ function Signup() {
 
 			navigate("/pages/next");
 		} else {
+      console.log(API_IP);
 			setErrorMessage(messErr); // Met à jour le message d'erreur dans l'état local
 		}
 	};
