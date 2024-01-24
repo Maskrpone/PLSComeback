@@ -1,0 +1,43 @@
+.footer-container {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0px;
+  padding: 5px;
+  color: white;
+  background-color: #3f2a56;
+  }
+  
+  .left-section {
+    flex: 1;
+    text-align: left;
+    font-size: 10px;
+  }
+  
+  .center-section {
+    display: flex;
+    flex: 1 1;
+    text-align: center;
+    font-size: 10px;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .right-section {
+    flex: 1;
+    text-align: left;
+    font-size: 10px;
+  }
+  
+  .names,
+  .credit {
+    font-size: 6px;
+    text-align: left;
+  }
+  
+  .disconnect-link {
+    color: white;
+    text-decoration: underline;
+  }
+  
