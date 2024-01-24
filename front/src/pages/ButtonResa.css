@@ -1,9 +1,11 @@
 button {
     
    }
-   
+   html .slick-slide img {
+      margin: auto;
+   }
    button.learn-more {
-
+      top: 30px;
     margin: auto;
     width: 12rem;
     height: auto;

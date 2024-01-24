@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import Arrow from './machines'
+import Arrow from './Arrow'
 
 function SliderEmprunt({ pictures }) {
   const settings = {
