@@ -5,11 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import './Slider.css'
 import './Calendar.css'
 import './ButtonResa.css'
-import {Footer} from "./Components/HeadFoot"
-
-
-import Header from'./Components/Header.js'
-
+import {Footer,Header} from "./Components/HeadFoot"
 function Machines() {
   return (
   <>

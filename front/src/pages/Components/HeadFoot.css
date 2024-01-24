@@ -1,3 +1,40 @@
+.header-container {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 0px;
+  width:100vw;
+  color: white;
+  background-color: #3f2a56;
+}
+
+.logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.titre {
+  flex-grow: 1; /* Le titre prendra le plus d'espace disponible */
+  text-align: center;
+}
+
+.boutonClient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+span.material-symbols-outlined {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.Lien{
+  color:white;
+}
+
 .footer-container {
   position: fixed;
   display: flex;
