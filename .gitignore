@@ -1,2 +1,2 @@
-api/node_modules/*
-db/*
+server/api/node_modules/*
+server/db/*
