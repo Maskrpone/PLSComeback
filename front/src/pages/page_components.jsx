@@ -2,6 +2,7 @@ import React,{ useState } from 'react';
 import "./../App.css";
 import {Link} from "react-router-dom";
 import {Footer,Header} from "./Components/HeadFoot"
+import BoutonRetour from './Components/BoutonRetour';
 
 
 const Page_components=()=>{
@@ -36,6 +37,7 @@ const Page_components=()=>{
         <div className="App">
             <Header/>
             <header className="App-header">
+                <BoutonRetour url="/"/>
                 <Link to="/"> home</Link>
                 <br/><br/>
                 <div className="w-96 mb-3 xl:w-96">
