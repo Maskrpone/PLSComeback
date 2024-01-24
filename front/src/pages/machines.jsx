@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import './Slider.css'
 import './Calendar.css'
 import './ButtonResa.css'
+//import {Footer} from "./Components/HeadFoot"
 
 
 function Machines() {
@@ -26,7 +27,7 @@ function Machines() {
        <CalendarWidget></CalendarWidget>
 
     </div>
-    
+    {/* <Footer/> */}
   </>
   );
 }
