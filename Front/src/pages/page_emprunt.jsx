@@ -34,7 +34,7 @@ const Page_emprunt = () => {
 					for (const item of Object.keys(userHistory)) {
                         const entry = new User(
                             item,
-                            userHistory[item]._id,
+                            user.username,
                             new Date(userHistory[item].plannedReturnDate).toISOString() || "N/A",
                             new Date(userHistory[item].realReturnDate).toISOString() || "N/A"
                         );
