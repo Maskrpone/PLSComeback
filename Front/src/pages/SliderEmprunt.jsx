@@ -13,7 +13,16 @@ function SliderEmprunt({ pictures }) {
     prevArrow: <Arrow className="slick-prev" direction="prev" />,
     nextArrow: <Arrow className="slick-next" direction="next" />,
   };
-
+ // Obtenir la largeur de l'écran
+ const largeurEcran = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    
+ // Définir slidesToShow en fonction de la largeur de l'écran
+ if (largeurEcran < 700) {
+     settings.slidesToShow = 1;
+ } else {
+     settings.slidesToShow = 3;
+ }
+ 
   return (
     <div className="Picture">
       <Slider {...settings}>

@@ -23,8 +23,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-div.Help{
+.Help span {
+  font-size: 40px;
+}
+div.Help {
   position: absolute;
-    z-index: 50;
-    bottom: 6vh;
+  z-index: 50;
+  bottom: 8vh;
+  right: 20px;
+  width: 40px;
 }

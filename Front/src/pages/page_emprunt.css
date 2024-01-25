@@ -6,10 +6,10 @@
 }
 .App-header tr {
     display: flex;
-    align-content: center;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
+    justify-content: space-between;
 }
 .App-header td {
     width: 33vw;
@@ -39,4 +39,10 @@ html .App-header thead,html .App-header table{
 .App-header button{
     background-color: #f06b42;
     border: 2px solid #3f2a56;
+}
+html .pl-36 {
+    padding-left: 0rem;
+}
+.App-header tr th {
+    width: 50%;
 }
