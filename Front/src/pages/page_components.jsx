@@ -6,6 +6,8 @@ import BoutonRetour from "./Components/BoutonRetour";
 import axios from "axios";
 import qs from "qs";
 import { API_IP } from "../Constants";
+import Cookies from "js-cookie";
+
 
 const Page_components = () => {
 	const [users, setUsers] = useState([]);
@@ -30,7 +32,9 @@ const Page_components = () => {
 		fetchData();
 	}, []);
 
-	const admin = true;
+	const myCookieValue = Cookies.get('user_data');
+    const admin = (myCookieValue !== undefined) ? JSON.parse(myCookieValue).isAdmin : false;
+	console.log(admin);
 
 	const [searchTerm, setSearchTerm] = useState("");
 
