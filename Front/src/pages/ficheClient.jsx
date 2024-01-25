@@ -13,7 +13,7 @@ function FicheClient(){
                     <Header/>
 
         <div id="ficheClient">
-            <BoutonRetour url="/"/>
+            <BoutonRetour url="/pages/home"/>
             <header>
                 <h1> Currently associated with your account </h1>
             </header>

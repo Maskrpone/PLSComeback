@@ -70,7 +70,7 @@ function Login() {
 					console.log(JSON.stringify(response.data));
 					if (response.status === 200){
 						Cookies.set('user_data', JSON.stringify(response.data));
-						navigate("/pages/next");
+						navigate("/pages/home");
 					} 
 				})
 				.catch((error) => {

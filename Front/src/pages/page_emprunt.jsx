@@ -27,7 +27,7 @@ const Page_emprunt=()=>{
         <div className="App">
             <Header/>
             <header className="App-header">
-                <BoutonRetour url="/"/>
+            <BoutonRetour url="/pages/home"/>
 
                 <Link to="/"> home</Link>
                 <br/><br/>

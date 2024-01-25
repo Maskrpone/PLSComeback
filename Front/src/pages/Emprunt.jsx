@@ -96,7 +96,7 @@ function Emprunt() {
 				<h1> Tool rental </h1>
 			</header>
 
-			<BoutonRetour url="/" />
+			<BoutonRetour url="/pages/home" />
 
 			<div id="wrapper">
 				{pictures.map((picture, index) => (
