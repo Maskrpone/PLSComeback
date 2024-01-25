@@ -162,7 +162,7 @@ function Signup() {
 				rel="stylesheet"
 				href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
 			/>
-			<h1>PleaseComeBack</h1>
+			<img src="https://media.discordapp.net/attachments/1198928178903777300/1200057810088644618/logo.png?ex=65c4cbed&is=65b256ed&hm=d943e3a76cf03e0eac03e702e553e4da1e057fffa21f16d2fcb1d2058db0f4d8&=&format=webp&quality=lossless&width=1155&height=385" alt="" />
 			<div>
 				<BoutonRetour url="/" />
 				<ZoneSaisieTexte label="Name " onChange={handleNameChange} />
