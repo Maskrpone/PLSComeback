@@ -3,8 +3,8 @@ button {
    }
    html .slick-slide img {
       margin: auto;
-      width: 100vw;
-   }
+      width: 80vw;
+      }
    .slick-track {
       height: 80vh;
   }
