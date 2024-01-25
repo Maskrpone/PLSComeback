@@ -10,6 +10,8 @@
 }
 .header-container img {
   max-height: 10vh;
+  position: relative;
+  z-index: 2;
 }
 .header-container .logo {
   position: absolute;

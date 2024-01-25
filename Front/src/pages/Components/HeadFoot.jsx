@@ -17,8 +17,8 @@ export function Header() {
             logout
           </span>
           </Link>
-        <Link to="/pages/home" className="Lien">
 
+      <Link to="/pages/home" className="Lien">
       <div className="titre">
         <img src="https://media.discordapp.net/attachments/1198928178903777300/1200057810088644618/logo.png?ex=65c4cbed&is=65b256ed&hm=d943e3a76cf03e0eac03e702e553e4da1e057fffa21f16d2fcb1d2058db0f4d8&=&format=webp&quality=lossless&width=1155&height=385" alt="" />
       </div>
