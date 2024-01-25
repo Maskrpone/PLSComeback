@@ -1,0 +1,120 @@
+/* .help-modal {
+    background-color: #f6f1fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 60%;
+    border: 5px solid #3b2c53;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+.close {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+} 
+ */
+
+ .help-modal {
+  background-color: #f6f1fd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+  border: 5px solid #3b2c53;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  z-index: 100;
+  }
+  
+  .modal-content {
+    width: 70%;
+    height: 70%;
+    margin-top: 10%; /* Espace de 10% depuis le haut */
+    overflow-y: auto; /* Ajoute une barre de défilement si le contenu est trop long */
+    padding: 2px; /* Ajoute un espace intérieur pour le contenu */
+  }
+  
+  #chat-log {
+
+
+    overflow-y: auto;
+    border-bottom: 2px solid #3b2c53; /* Séparation entre messages utilisateur et ChatGPT */
+    padding-bottom: 10px; /* Espace sous le chat log */
+  }
+  
+  #chat-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #chat-log div {
+    margin-bottom: 10px; /* Espace entre les messages */
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px; /* Espace entre le label et la zone de texte */
+  }
+  
+  input {
+    width: calc(100% - 20px); /* Largeur de la zone de texte, moins les bordures */
+    margin-bottom: 10px; /* Espace entre la zone de texte et le bouton */
+  }
+  
+
+  .EnvoyerMessage{
+    position: fixed;
+    width: 100%;
+    left: 0%;
+    height: 10%;
+    top: 90%;
+  }
+
+  .user-input{
+    background-color: #f6f1fd;
+    width: 80%;
+    height: 50%;
+    position: absolute;
+    top: 30%;
+  }
+
+  .user-input-send{
+    background-color: #3b2c53;
+    cursor: pointer;
+    width: 21%;
+    height: 50%;
+    position: absolute;
+    left: 80%;
+    top: 30%;
+    color: white;
+  }
+
+  .Titre-modul{
+    position:absolute;
+    width: 80%;
+    top: 0%;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .close{
+    position:absolute;
+    font-size: 30px;
+    height: 10%;
+    left: 90%;
+    top: 0%;
+  }

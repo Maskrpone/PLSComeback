@@ -1,0 +1,42 @@
+.App-header tbody img{
+    width: 100%;
+    margin: 0px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+.App-header tr {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.App-header td {
+    width: 33vw;
+}
+.App-header p{
+    min-width: 0px;
+}
+.App-header table{
+    width: 95vw;
+}
+
+.App-header td:nth-child(2) {
+    width: 20vw;
+}
+.App-header td:nth-child(2) p{
+    margin: 0px;
+    text-align: justify;
+}
+.App-header td:nth-child(3) {
+    width: 42vw;
+}
+html .App-header thead,html .App-header table{
+    outline-color: black    ;
+    border: black 3px solid;
+}
+
+.App-header button{
+    background-color: #f06b42;
+    border: 2px solid #3f2a56;
+}

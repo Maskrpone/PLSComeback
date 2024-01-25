@@ -6,33 +6,35 @@ import BoutonRetour from "./Components/BoutonRetour";
 import axios from "axios";
 import qs from "qs";
 import { API_IP } from "../Constants";
+import Cookies from "js-cookie";
+
 
 const Page_components = () => {
+	const [users, setUsers] = useState([]);
 
-    const [users, setUsers] = useState([]);
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await axios.get(`http://${API_IP}:3000/supplies`);
 
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get(`http://${API_IP}:3000/supplies`);
+				const formattedUsers = response.data.map((user) => ({
+					nom: user.name,
+					image: user.image,
+					taille: user.quantity,
+				}));
 
-            const formattedUsers = response.data.map((user) => ({
-                nom: user.name,
-                image: user.image,
-                taille: user.quantity,
-            }));
+				setUsers(formattedUsers);
+			} catch (error) {
+				console.log(error);
+			}
+		};
 
+		fetchData();
+	}, []);
 
-            setUsers(formattedUsers);
-          } catch (error) {
-            console.log(error);
-          }
-        };
-    
-        fetchData();
-      }, []);
-
-	const admin = true;
+	const myCookieValue = Cookies.get('user_data');
+    const admin = (myCookieValue !== undefined) ? JSON.parse(myCookieValue).isAdmin : false;
+	console.log(admin);
 
 	const [searchTerm, setSearchTerm] = useState("");
 
@@ -64,35 +66,32 @@ const Page_components = () => {
 
 	const handleClick = (str) => {
 		console.log(str);
-		let UpdateSuccess = false;
-		for (let i = 0; i < str.length; i++){
-			let name_object = str[i].nom;
-			let taille_object = str[i].taille;
+		for (let i = 0; i < str.length; i++) {
+			const name_object = str[i].nom;
+			const taille_object = str[i].taille;
 
-				const fetchData = async () => {
-					try {
-						await axios.put(`http://${API_IP}:3000/supplies/` + name_object + '/modify', {"quantity": taille_object})
-					.then(response => {
-						UpdateSuccess = true;
-							console.log('Mise à jour réussie :', response.data);
+			const fetchData = async () => {
+				try {
+					await axios
+						.put(`http://${API_IP}:3000/supplies/${name_object}/modify`, {
+							quantity: taille_object,
 						})
-							.catch(error => {
-								UpdateSuccess = false;
-								console.error('Erreur lors de la mise à jour :', error);
-							});
-					} catch (error) {
-						console.log(error);
-					}
-				};
+						.then((response) => {
+							console.log("Mise à jour réussie :", response.data);
+							// alert("Mise à jour réussie");
+						})
+						.catch((error) => {
+							console.error("Erreur lors de la mise à jour :", error);
+							// alert("Mise à jour échouée");
+						});
+				} catch (error) {
+					console.log(error);
+				}
+			};
 
-				fetchData();
+			fetchData();
 		}
-		if (UpdateSuccess === true){
-			alert("Mise à jour réussie");
-		}
-		else {
-			alert("Mise à jour échouée");
-		}
+		alert("Mise à jour réussie");
 		console.log(str);
 	};
 
@@ -104,8 +103,8 @@ const Page_components = () => {
 		<div className="App">
 			<Header />
 			<header className="App-header">
-            <BoutonRetour url="/pages/home"/>
-				<Link to="/"> home</Link>
+				{/* <BoutonRetour url="/pages/home" /> */}
+				{/* <Link to="/"> home</Link> */}
 				<br />
 				<br />
 				<div className="w-96 mb-3 xl:w-96">

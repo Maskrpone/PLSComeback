@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
     res.status(201).json(outilEnregistre);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Erreur Serveur" });
+    res.status(500).json({ message: "Server Error" });
   }
 });
 
@@ -50,7 +50,7 @@ router.put("/:name", async (req, res) => {
       { new: true },
     );
 
-    (!updateTool) ? res.status(403).send("Élément non trouvé") : res.status(201).json(updateTool);
+    (!updateTool) ? res.status(403).send("Element not found") : res.status(201).json(updateTool);
   } catch (error) {
     console.error(error);
     res.status(501).send("Internal Server Error");

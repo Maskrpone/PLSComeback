@@ -6,7 +6,7 @@ import BoutonRetour from "./Components/BoutonRetour";
 import axios from "axios";
 import qs from "qs";
 import { API_IP } from "../Constants";
-
+import "./page_emprunt.css";
 const Page_emprunt = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 
@@ -84,9 +84,9 @@ const Page_emprunt = () => {
 		<div className="App">
 			<Header />
 			<header className="App-header">
-				<BoutonRetour url="/pages/home" />
+				{/* <BoutonRetour url="/pages/home" /> */}
 
-				<Link to="/"> home</Link>
+				{/* <Link to="/"> home</Link> */}
 				<br />
 				<br />
 				<div className="w-96 mb-3 xl:w-96">
@@ -131,7 +131,7 @@ const Page_emprunt = () => {
 
 								<div className="flex  w-full float-right pl-36 lg:w-9/12 lg:pl-0 lg:flex-none lg:justify-start">
 									<th className="flex float-right lg:w-1/3 lg:justify-center lg:float-none lg:flex-auto">
-										ID
+										User
 									</th>
 									<th className="lg:hidden">/</th>
 									<th className="flex float-right lg:w-1/3 lg:float-none lg:justify-end lg:flex-auto">
