@@ -5,11 +5,12 @@ import ZoneMotDePasse from "./Components/ZoneMDP";
 import { BoutonSignIn } from "./Components/Bouton";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import BoutonRetour from "./Components/BoutonRetour";
 import axios from "axios";
 import qs from "qs";
 import { API_IP } from "../Constants";
 import sha256 from "js-sha256";
+import Cookies from "js-cookie";
+
 
 function Login() {
 	const navigate = useNavigate();
@@ -67,7 +68,10 @@ function Login() {
 				.request(config)
 				.then((response) => {
 					console.log(JSON.stringify(response.data));
-					if (response.status === 200) navigate("/pages/next");
+					if (response.status === 200){
+						Cookies.set('user_data', JSON.stringify(response.data));
+						navigate("/pages/next");
+					} 
 				})
 				.catch((error) => {
 					console.log(error);
