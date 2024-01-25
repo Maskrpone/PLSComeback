@@ -480,14 +480,15 @@ function App() {
 
 			// Post dans reservation
 			try {
-				console.log(calendarInfo[0].end);
+				const end = new Date(calendarInfo[calendarInfo.length - 1].end).toISOString();
+				console.log(end)
 				const userCookie = JSON.parse(Cookies.get("user_data")) || null;
 				await axios
 					.post(`http://${API_IP}:3000/reserve`, {
 						username: userCookie.username,
 						name: name_object,
 						quantity: 1,
-						plannedReturnDate: calendarInfo[0].end,
+						plannedReturnDate: end,
 					})
 					.then((response) => {
 						console.log("Mise à jour réussie :", response.data);
