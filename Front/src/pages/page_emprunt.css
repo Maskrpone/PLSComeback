@@ -24,6 +24,10 @@
 .App-header td:nth-child(2) {
     width: 20vw;
 }
+.App-header td:nth-child(2) p{
+    margin: 0px;
+    text-align: justify;
+}
 .App-header td:nth-child(3) {
     width: 42vw;
 }
@@ -34,4 +38,5 @@ html .App-header thead,html .App-header table{
 
 .App-header button{
     background-color: #f06b42;
+    border: 2px solid #3f2a56;
 }
