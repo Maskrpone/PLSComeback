@@ -35,7 +35,7 @@ function Emprunt() {
 				const formattedData = response.data.map((tool) => ({
 					title: tool.name,
 					url: tool.image,
-          calendar: tool.calendar
+          			calendar: tool.calendar
 				}));
 
 				console.log(formattedData);
@@ -109,13 +109,27 @@ function Emprunt() {
 
 	const openPopup = (index) => {
 		const updatedJsonData = [...jsonData];
+		console.log("AAAAAAAAAAAAAAA");
+		console.log(jsonData);
+		console.log(updatedJsonData);
+		console.log(pictures[index].calendar);
+		console.log(pictures[index].title);
 
-		// Modifiez l'objet spécifique avec le nouveau titre
-		updatedJsonData[0].object_name = pictures[index].title;
-
-		// Mettez à jour le tableau jsonData
-		jsonData = updatedJsonData;
-
+		try {
+			// Modifiez l'objet spécifique avec le nouveau titre
+			updatedJsonData[index] = JSON.parse(pictures[index].calendar);
+			console.log("CCCCCCCCCC");
+			console.log(updatedJsonData[index]);
+			// Mettez à jour le tableau jsonData
+			jsonData = updatedJsonData[index];
+		}
+		catch (error){
+			jsonData = [{
+				object_name: pictures[index].title
+			}];
+			console.error('Erreur d\'analyse JSON :', error.message);
+		}
+		console.log(jsonData);
 		setSelectedImage(index);
 	};
 

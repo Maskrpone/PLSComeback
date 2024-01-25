@@ -4,7 +4,7 @@ import {
     Datepicker,
     Eventcalendar,
     Input,
-    localeFr,
+    localeFr, momentTimezone,
     Popup,
     setOptions,
     Snackbar,
@@ -14,6 +14,10 @@ import {
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import "./Calendar_tools.css";
 import {jsonData} from "./Emprunt";
+import axios from "axios";
+import {API_IP} from "../Constants";
+import Cookies from "js-cookie";
+import moment from  'moment-timezone';
 
 
 setOptions({
@@ -23,6 +27,9 @@ setOptions({
 });
 
 const now = new Date();
+
+// setup Mobiscroll Moment plugin
+momentTimezone.moment = moment;
 
 function Event(id, start, end, title, description) {
     this.id = id;
@@ -35,11 +42,6 @@ function Event(id, start, end, title, description) {
 function User (nameUser, firstname){
     this.nameUser = nameUser;
     this.firstname = firstname;
-}
-
-const myIframe = () => {
-    console.log(jsonData);
-    return jsonData
 }
 
 const defaultEvents = [
@@ -113,11 +115,6 @@ function App() {
     const [tempColor, setTempColor] = useState('');
     const [isSnackbarOpen, setSnackbarOpen] = useState(false);
     const colorPicker = useRef();
-    const [isClearable, setIsClearable] = useState(true);
-    const [isSearchable, setIsSearchable] = useState(true);
-    const [isDisabled, setIsDisabled] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isRtl, setIsRtl] = useState(false);
 
     useEffect(() => {
         console.log(jsonData);
@@ -170,9 +167,14 @@ function App() {
     }, []);
 
     const saveEvent = useCallback(() => {
-        // A changer avec l'appel du user
-        let actualUser = new User("Langer","Camille");
-        console.log(jsonData.object_name);
+        const specificCookie = Cookies.get('user_data');
+        const jsonCookie= JSON.parse(specificCookie);
+        const prenom = jsonCookie.prenom;
+        const nom = jsonCookie.nom;
+
+        // Nom et prénom de la personne connectée
+        let actualUser = new User(nom,prenom);
+        console.log(jsonData[0].object_name);
         const newEvent = {
             id: tempEvent.id,
             object_name: jsonData[0].object_name,
@@ -227,8 +229,13 @@ function App() {
     // handle popup form changes
 
     const titleChange = useCallback((ev) => {
-        // A changer avec l'appel du user
-        let actualUser = new User("Camille Langer");
+        const specificCookie = Cookies.get('user_data');
+        const jsonCookie= JSON.parse(specificCookie);
+        const prenom = jsonCookie.prenom;
+        const nom = jsonCookie.nom;
+
+        // Nom et prénom de la personne connectée
+        let actualUser = new User(nom,prenom);
         setTitle(actualUser.firstname + " " + actualUser.nameUser);
     }, []);
 
@@ -409,7 +416,7 @@ function App() {
             allDay: true,
             status: event.status,
             color: event.color,
-            editable: false,
+            editable: true,
         };
     };
 
@@ -422,12 +429,32 @@ function App() {
         const calendarInfo = extractCalendarInfo();
         // Convertir les donnÃ©es en format JSON
         const jsonData = JSON.stringify(calendarInfo, null, 2);
-
+        console.log("GGGGGGGGGGGGGGGGGGGG");
+        console.log(jsonData);
+        console.log(calendarInfo[0]);
+        const name_object = calendarInfo[0].object_name;
 
         // Afficher un message de confirmation Ã  l'utilisateur
         setSnackbarOpen(true);
+        const fetchData = async () => {
+            try {
+                await axios.put(`http://${API_IP}:3000/tools/` + name_object, {"calendar": jsonData})
+                    .then(response => {
+                        console.log('Mise à jour réussie :', response.data);
+                        alert("Mise à jour réussie");
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors de la mise à jour :', error);
+                        alert("Mise à jour échouée");
+                    });
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
-        console.log('Calendrier exportÃ© en JSON:', jsonData);
+        fetchData();
+        console.log('Calendrier exporté en JSON:', jsonData);
+
 
     }, [extractCalendarInfo]);
 
@@ -457,7 +484,6 @@ function App() {
     useEffect(() => {
         // Utilisez une fonction pour crÃ©er myEvents lorsque events change
         const updateMyEvents = () => {
-            //const jsonDataString = '[{"id":1,"title":"Gaspard Crepin","description":"","start":"2024-01-08T13:00","end":"2024-01-08T13:45","allDay":true,"color":"#009788","editable":false},{"id":2,"title":"Remi Hage","description":"","start":"2024-01-24T15:00","end":"2024-01-24T16:00","allDay":true,"color":"#ff9900","editable":false},{"id":3,"title":"Hippolyte Deparis","description":"","start":"2024-01-23T18:00","end":"2024-01-23T22:00","allDay":true,"color":"#3f51b5","editable":false},{"id":4,"title":"Hugo Many","description":"","start":"2024-01-25T10:30","end":"2024-01-25T11:30","allDay":true,"color":"#f44437","editable":false},{"id":"mbsc_1","title":"Test","start":"2024-01-09T23:00:00.000Z","end":"2024-01-12T23:00:00.000Z","allDay":true,"status":"busy","editable":false},{"id":"mbsc_2","title":"zgrlgnrljgeirjgierjg","start":"2024-01-18T23:00:00.000Z","end":"2024-01-21T23:00:00.000Z","allDay":true,"status":"busy","editable":false},{"id":"mbsc_3","title":"zehef","start":"2024-01-02T23:00:00.000Z","end":"2024-01-04T23:00:00.000Z","allDay":true,"status":"busy","editable":false}]';
             const newMyEvents = jsonData;
 
 
@@ -471,13 +497,16 @@ function App() {
     return (
         <>
             <div className="text-center block m-auto">
-                <Button onClick={onExport} style={{ backgroundColor: '#d97706', color: '#fff' }} >Valider la rÃ©servation</Button>
+                <Button onClick={onExport} style={{ backgroundColor: '#d97706', color: '#fff' }} >Valider la reservation</Button>
             </div>
             <Eventcalendar
                 themeVariant="dark"
+                dataTimezone='utc'
+                displayTimezone='local'
+                timezonePlugin={momentTimezone}
                 view={myView}
                 data={myEvents}
-                clickToCreate="double"
+                clickToCreate="single"
                 dragToCreate={true}
                 dragToMove={true}
                 dragToResize={true}
