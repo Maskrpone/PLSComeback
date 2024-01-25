@@ -12,41 +12,7 @@ import "./Calendar.css";
 import "./ButtonResa.css";
 import Cookies from "js-cookie";
 
-const DATA_EXAMPLES = {
-    "history": {
-        "items": {
-            "Raspberry": {
-                "quantity": 1,
-                "date": "Wed Jan 24 2024 13:26:56 GMT+0100 (heure normale d’Europe centrale)",
-                "plannedReturnDate": "Wed Jan 01 2025 01:00:00 GMT+0100 (heure normale d’Europe centrale)",
-                "realReturnDate": "Wed Jan 24 2024 14:03:19 GMT+0100 (heure normale d’Europe centrale)",
-                "type":0,
-                "isLate": false,
-                "_id": "65b102102da1471662f98ef3"
-            },
-            "Résistance": {
-                "quantity": 4,
-                "date": "Wed Jan 24 2024 13:28:14 GMT+0100 (heure normale d’Europe centrale)",
-                "plannedReturnDate": "Wed Jan 01 2025 01:00:00 GMT+0100 (heure normale d’Europe centrale)",
-                "realReturnDate": null,
-                "type":1,
-                "isLate": false,
-                "_id": "65b1025e2da1471662f98f00"
-            },
-            "Bagnole": {
-                "quantity": 1,
-                "date": "Wed Jan 24 2024 15:19:48 GMT+0100 (heure normale d’Europe centrale)",
-                "plannedReturnDate": "Wed Jan 01 2025 01:00:00 GMT+0100 (heure normale d’Europe centrale)",
-                "realReturnDate": null,
-                "type":2,
-                "isLate": false,
-                "_id": "65b11c8491d5d4ea604ff16e"
-            }
-        }
-    },
-    "_id": "65afbef45b12e7a1eacd54a1",
-    "username": "Rémi"
-}
+let DATA_EXAMPLES;
 
 function FicheClient(){      
     // Récupérer tous les cookies
@@ -68,16 +34,17 @@ function FicheClient(){
     useEffect(() => {
         const fetchData = async () => {
           try {
-            console.log("Request -> "+`http://${API_IP}:3000/users/${jsonCookie.username}`);
-            const response = await axios.get(`http://${API_IP}:3000/users/${jsonCookie.username}`);
+            console.log("Request -> "+`http://${API_IP}:3000/history/${jsonCookie.username}`);
+            const response = await axios.get(`http://${API_IP}:3000/history/${jsonCookie.username}`);
     
             // const formattedData = response.data.map((machine) => ({
             //   title: machine.name,
             //   url: machine.image,
             // }));
     
-            console.log(response);
-    
+            console.log(response.data);
+            DATA_EXAMPLES=response.data;
+            dataPut();
           } catch (error) {
             console.log(error);
           }
@@ -97,7 +64,7 @@ function FicheClient(){
   const [type1Data, setType1Data] = useState([]);
   const [type2Data, setType2Data] = useState([]);
 
-  useEffect(() => {
+  function dataPut(){
     // Extract the items from history
     const items = DATA_EXAMPLES.history.items;
 
@@ -109,30 +76,9 @@ function FicheClient(){
     setType0Data(type0FilteredData);
     setType1Data(type1FilteredData);
     setType2Data(type2FilteredData);
-  }, []);
+  }
 
-  const renderTable = (data) => (
-    <table>
-      <thead>
-        <tr>
-          <th>DATE</th>
-          <th>NAME</th>
-          <th>QUANTITY</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, index) => (
-          <tr key={index}>
-            <td>{item.date}</td>
-            <td>ertfg</td>
-            <td>{item.quantity}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-
-    return(
+  return(
         <>
                     <Header/>
                     <div id="ficheClient">
