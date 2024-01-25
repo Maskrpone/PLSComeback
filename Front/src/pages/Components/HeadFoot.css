@@ -1,14 +1,18 @@
 .header-container {
   position: relative;
-    display: flex;
-    justify-content: space-between;
-    top: 0px;
-    height: 10vh;
-    width: 100vw;
-    color: white;
-    background-color: #3f2a56;
+  display: flex;
+  justify-content: center;
+  top: 0px;
+  height: 10vh;
+  width: 100vw;
+  color: white;
+  background-color: #3f2a56;
 }
-
+.header-container img {
+  max-height: 10vh;
+  position: relative;
+  z-index: 2;
+}
 .header-container .logo {
   position: absolute;
     top: 3vh;
@@ -26,11 +30,6 @@
   justify-content: center;
 }
 
-.header-container span.material-symbols-outlined {
-  position: absolute;
-    top: 3vh;
-    right: 8vw;
-}
 
 .header-container .Lien{
   color:white;
@@ -45,12 +44,22 @@
   color: white;
   background-color: #3f2a56;
   width: 100vw;
-  height: 10Vh;
+  height: 7Vh;
   flex-direction: row;
   flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
 
   }
-  
+  .footer-container p{
+    text-align: center ;
+  }
+  .footer-container a{
+    text-decoration: underline;
+    font-size: larger;
+
+
+  }
   .footer-container .left-section {
     flex: 1;
     text-align: left;
@@ -84,3 +93,14 @@
     text-decoration: underline;
   }
   
+
+#spanLeft{
+  position: absolute;
+  top: 3vh;
+  left: 8vw;
+}
+#spanRight{
+  position: absolute;
+    top: 3vh;
+    right: 8vw;
+}

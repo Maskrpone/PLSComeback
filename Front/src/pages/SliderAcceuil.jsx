@@ -16,12 +16,22 @@ function SliderAcceuil({ pictures }) {
         dots: true,
         infinite: true,
         speed: 400,
-        slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
         prevArrow: <Arrow className="slick-prev" direction="prev" />,
         nextArrow: <Arrow className="slick-next" direction="next" />,
     };
+
+    // Obtenir la largeur de l'écran
+    const largeurEcran = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    
+    // Définir slidesToShow en fonction de la largeur de l'écran
+    if (largeurEcran < 700) {
+        settings.slidesToShow = 1;
+    } else {
+        settings.slidesToShow = 3;
+    }
+    
 
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
@@ -59,15 +69,15 @@ function SliderAcceuil({ pictures }) {
         <div className="Picture">
             <Slider {...settings}>
                 {pictures.map((picture, index) => (
-                    <div key={index} >
+                    <div key={index} id={picture.title} onClick={() => wrapper(picture.title)}>
                         <h3>{picture.title}</h3>
                         <img src={picture.url} alt={picture.title} />
-                        <button id={picture.title} className="learn-more" onClick={() => wrapper(picture.title)}>
+                        {/* <button className="learn-more"  >
                             <span className="circle" aria-hidden="true">
                             <span className="icon arrow"></span>
                             </span>
                             <span className="button-text">GO</span>
-                        </button>
+                        </button> */}
 
                     </div>
                 ))}

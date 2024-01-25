@@ -26,6 +26,10 @@ const itemSchema = new mongoose.Schema({
   isLate: {
     type: Boolean,
     required: true,
+  },
+  type: {
+    type: Number,
+    required: true,
   }
 });
 

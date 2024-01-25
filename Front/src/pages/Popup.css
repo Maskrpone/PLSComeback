@@ -1,0 +1,20 @@
+.popup {
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-content {
+    position: relative;
+    background: #000; /* Fond blanc pour le contenu du popup */
+    padding: 20px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+}

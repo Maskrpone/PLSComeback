@@ -5,9 +5,20 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-content: center;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
+.Loginform {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .Loginform h1 {
     background: #3b2c53;
@@ -38,13 +49,14 @@
 .buttonReturn {
     
     left: 10px;
-    top: 10px;
+    top: 10vh;
     border: 0px;
     background: lightgray;
     border-radius: 20px;
-    width: 40px;
+    width: 30px;
     position: absolute;
 }
-.Loginform span.material-symbols-outlined {
+html .buttonReturn span.material-symbols-outlined {
     line-height: 1.6;
+    font-size: 20px;
 }

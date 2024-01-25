@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
     res.status(201).json(savedMachine);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Erreur Serveur" });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
