@@ -28,7 +28,7 @@ const Page_components = () => {
             console.log(error);
           }
         };
-    
+
         fetchData();
       }, []);
 
