@@ -8,7 +8,10 @@ export function Header() {
   return (
     <div className="header-container">
       <div className="logo">
-        <img src="#" />
+      <Link to="/pages/home" className="Lien">
+          <img src="#" />
+        </Link>
+        
       </div>
       <div className="titre">
         <h1>PLSComeBack</h1>
