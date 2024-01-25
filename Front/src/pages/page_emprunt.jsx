@@ -131,7 +131,7 @@ const Page_emprunt = () => {
 
 								<div className="flex  w-full float-right pl-36 lg:w-9/12 lg:pl-0 lg:flex-none lg:justify-start">
 									<th className="flex float-right lg:w-1/3 lg:justify-center lg:float-none lg:flex-auto">
-										ID
+										User
 									</th>
 									<th className="lg:hidden">/</th>
 									<th className="flex float-right lg:w-1/3 lg:float-none lg:justify-end lg:flex-auto">
