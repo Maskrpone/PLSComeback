@@ -18,6 +18,7 @@ import { jsonData } from "./Emprunt";
 import axios from "axios";
 import { API_IP } from "../Constants";
 import Cookies from "js-cookie";
+import { json } from "react-router-dom";
 
 setOptions({
 	locale: localeFr,
@@ -472,6 +473,27 @@ function App() {
 					.catch((error) => {
 						console.error("Erreur lors de la mise à jour :", error);
 						alert("Update failed");
+					});
+			} catch (error) {
+				console.log(error);
+			}
+
+			// Post dans reservation
+			try {
+				console.log(calendarInfo[0].end);
+				const userCookie = JSON.parse(Cookies.get("user_data")) || null;
+				await axios
+					.post(`http://${API_IP}:3000/reserve`, {
+						username: userCookie.username,
+						name: name_object,
+						quantity: 1,
+						plannedReturnDate: calendarInfo[0].end,
+					})
+					.then((response) => {
+						console.log("Mise à jour réussie :", response.data);
+					})
+					.catch((error) => {
+						console.error("Erreur lors de la mise à jour :", error);
 					});
 			} catch (error) {
 				console.log(error);
