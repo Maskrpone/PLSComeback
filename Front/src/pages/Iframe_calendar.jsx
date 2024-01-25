@@ -17,7 +17,6 @@ import {jsonData} from "./Emprunt";
 import axios from "axios";
 import {API_IP} from "../Constants";
 import Cookies from "js-cookie";
-import moment from  'moment-timezone';
 
 
 setOptions({
@@ -28,8 +27,6 @@ setOptions({
 
 const now = new Date();
 
-// setup Mobiscroll Moment plugin
-momentTimezone.moment = moment;
 
 function Event(id, start, end, title, description) {
     this.id = id;
@@ -515,9 +512,6 @@ function App() {
             </div>
             <Eventcalendar
                 themeVariant="dark"
-                dataTimezone='utc'
-                displayTimezone='local'
-                timezonePlugin={momentTimezone}
                 view={myView}
                 data={myEvents}
                 clickToCreate="single"
