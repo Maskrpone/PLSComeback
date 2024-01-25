@@ -53,10 +53,16 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
-  align-items: flex-end;
+  align-items: center;
 
   }
-  
+  .footer-container p{
+    text-align: center ;
+  }
+  .footer-container a{
+    text-decoration: underline;
+
+  }
   .footer-container .left-section {
     flex: 1;
     text-align: left;

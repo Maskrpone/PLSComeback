@@ -42,7 +42,15 @@ export function Footer() {
     <div className='footer-container'>
       <div className='left-section'>
         <p>Website created by :</p>
-        <p className='names'>CREPIN Gaspard, DEPARIS Hippolyte, ESPRIET Charles, HAGE Rémi, HOSTE Matthieu, LANGER Camille, MANY Hugo, VICO Isaure</p>
+        <p className='names'>
+        <a href='https://www.linkedin.com/in/gaspard-cr%C3%A9pin-a249b3250/'>CREPIN Gaspard, </a>
+        <a href='https://www.linkedin.com/in/hippolyte-deparis-7ba39a204/'> DEPARIS Hippolyte, </a>
+        <a href='https://www.linkedin.com/in/charles-espriet-b162001aa/'> ESPRIET Charles, </a>
+        <a href='https://www.linkedin.com/in/r%C3%A9mi-hage-525055250/'> HAGE Rémi, </a>
+        <a href='https://www.linkedin.com/in/matthieu-hoste-8a45732a3/'>  HOSTE Matthieu, </a>
+        <a href='https://www.linkedin.com/in/camille-langer-4275a4230/'>  LANGER Camille, </a>
+        <a href='https://www.linkedin.com/in/hugo-many/'>  MANY Hugo, </a>
+        <a href='https://www.linkedin.com/in/isaure-vico-424b85232/'> VICO Isaure</a></p>
       </div>
       <div className='right-section'>
         <p>Credit :</p>
