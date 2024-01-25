@@ -17,16 +17,19 @@ router.post("/", async (req, res) => {
 		let query = await Supplies.findOne({ name: req.body.name });
 		let collection = "Supplies";
 		let stocks = query ? query.quantity : 0;
+    let type = 1;
 
 		if (!query) {
 			query = await Tools.findOne({ name: req.body.name });
 			collection = "Tools";
+      type = 0;
 			stocks = query ? query.InStock : 0;
 		}
 
 		if (!query) {
 			query = await Machines.findOne({ name: req.body.name });
 			collection = "Machines";
+      type = 2;
 			stocks = query ? query.InStock : 0;
 		}
 
@@ -68,6 +71,7 @@ router.post("/", async (req, res) => {
 			[req.body.name]: {
 				quantity: req.body.quantity,
 				date: new Date(),
+        type: type,
 				plannedReturnDate: req.body.plannedReturnDate ? new Date(req.body.plannedReturnDate) : null,
 				realReturnDate: null,
 				isLate: false,
