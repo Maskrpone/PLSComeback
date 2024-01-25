@@ -1,1 +1,1 @@
-export const API_IP = "localhost";
+export const API_IP = "10.224.1.231";

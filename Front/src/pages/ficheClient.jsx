@@ -68,10 +68,14 @@ function FicheClient(){
     // Extract the items from history
     const items = DATA_EXAMPLES.history.items;
 
+    console.log(Object.keys(DATA_EXAMPLES.history.items));
+
     // Filter data based on type and update state accordingly
     const type0FilteredData = Object.values(items).filter(item => item.type === 0);
     const type1FilteredData = Object.values(items).filter(item => item.type === 1);
     const type2FilteredData = Object.values(items).filter(item => item.type === 2);
+
+    
 
     setType0Data(type0FilteredData);
     setType1Data(type1FilteredData);
@@ -95,8 +99,8 @@ function FicheClient(){
         <tbody>
           {type0Data.map((item, index) => (
             <tr key={index}>
-              <td>{item.date}</td>
-              <td>{item.name}</td>
+              <td>{item.date.slice(0, -43)}</td>
+              <td>{}</td>
               <td>{item.quantity}</td>
             </tr>
           ))}
@@ -117,8 +121,8 @@ function FicheClient(){
         <tbody>
           {type1Data.map((item, index) => (
             <tr key={index}>
-              <td>{item.date}</td>
-              <td>{item.name}</td>
+              <td>{item.date.slice(0, -43)}</td>
+              <td>{}</td>
               <td>{item.quantity}</td>
             </tr>
           ))}
@@ -139,8 +143,8 @@ function FicheClient(){
         <tbody>
           {type2Data.map((item, index) => (
             <tr key={index}>
-              <td>{item.date}</td>
-              <td>{item.name}</td>
+              <td>{item.date.slice(0, -43)}</td>
+              <td>{}</td>
               <td>{item.quantity}</td>
             </tr>
           ))}
