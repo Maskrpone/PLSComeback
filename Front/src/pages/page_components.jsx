@@ -98,8 +98,8 @@ const Page_components = () => {
 		<div className="App">
 			<Header />
 			<header className="App-header">
-				<BoutonRetour url="/pages/home" />
-				<Link to="/"> home</Link>
+				{/* <BoutonRetour url="/pages/home" /> */}
+				{/* <Link to="/"> home</Link> */}
 				<br />
 				<br />
 				<div className="w-96 mb-3 xl:w-96">
