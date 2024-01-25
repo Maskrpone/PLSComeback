@@ -8,7 +8,9 @@
   color: white;
   background-color: #3f2a56;
 }
-
+.header-container img {
+  width: 55vw;
+}
 .header-container .logo {
   position: absolute;
     top: 3vh;
