@@ -9,7 +9,7 @@
   background-color: #3f2a56;
 }
 .header-container img {
-  width: 55vw;
+  max-height: 11vh;
 }
 .header-container .logo {
   position: absolute;
