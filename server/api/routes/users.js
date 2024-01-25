@@ -31,10 +31,10 @@ router.post("/", async (req, res) => {
 		const savedUser = await newUser.save();
 		res
 			.status(200)
-			.json({ message: "Utilisateur ajouté avec succès", user: savedUser });
+			.json({ message: "User added", user: savedUser });
 	} catch (error) {
 		console.error(error);
-		res.status(500).send("Erreur interne du serveur");
+		res.status(500).send("Internal Server Error");
 	}
 });
 
