@@ -74,11 +74,11 @@ const Page_components = () => {
 						})
 						.then((response) => {
 							console.log("Mise à jour réussie :", response.data);
-							alert("Mise à jour réussie");
+							// alert("Mise à jour réussie");
 						})
 						.catch((error) => {
 							console.error("Erreur lors de la mise à jour :", error);
-							alert("Mise à jour échouée");
+							// alert("Mise à jour échouée");
 						});
 				} catch (error) {
 					console.log(error);
@@ -87,6 +87,7 @@ const Page_components = () => {
 
 			fetchData();
 		}
+		alert("Mise à jour réussie");
 		console.log(str);
 	};
 
