@@ -70,9 +70,9 @@ router.post("/", async (req, res) => {
 		const newItem = {
 			[req.body.name]: {
 				quantity: req.body.quantity,
-				date: new Date(),
+				date: new Date().toISOString(),
         type: type,
-				plannedReturnDate: req.body.plannedReturnDate ? new Date(req.body.plannedReturnDate) : null,
+				plannedReturnDate: req.body.plannedReturnDate ? new Date(req.body.plannedReturnDate).toISOString() : null,
 				realReturnDate: null,
 				isLate: false,
 			},
