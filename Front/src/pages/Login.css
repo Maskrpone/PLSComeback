@@ -5,9 +5,20 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-content: center;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
+.Loginform {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .Loginform h1 {
     background: #3b2c53;

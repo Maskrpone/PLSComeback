@@ -69,15 +69,15 @@ function SliderAcceuil({ pictures }) {
         <div className="Picture">
             <Slider {...settings}>
                 {pictures.map((picture, index) => (
-                    <div key={index} >
+                    <div key={index} id={picture.title} onClick={() => wrapper(picture.title)}>
                         <h3>{picture.title}</h3>
                         <img src={picture.url} alt={picture.title} />
-                        <button id={picture.title} className="learn-more" onClick={() => wrapper(picture.title)}>
+                        {/* <button className="learn-more"  >
                             <span className="circle" aria-hidden="true">
                             <span className="icon arrow"></span>
                             </span>
                             <span className="button-text">GO</span>
-                        </button>
+                        </button> */}
 
                     </div>
                 ))}

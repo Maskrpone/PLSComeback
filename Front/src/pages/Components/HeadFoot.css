@@ -9,7 +9,9 @@
   background-color: #3f2a56;
 }
 .header-container img {
-  width: 55vw;
+  max-height: 10vh;
+  position: relative;
+  z-index: 2;
 }
 .header-container .logo {
   position: absolute;
@@ -47,12 +49,20 @@
   color: white;
   background-color: #3f2a56;
   width: 100vw;
-  height: 10Vh;
+  height: 7Vh;
   flex-direction: row;
   flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
 
   }
-  
+  .footer-container p{
+    text-align: center ;
+  }
+  .footer-container a{
+    text-decoration: underline;
+
+  }
   .footer-container .left-section {
     flex: 1;
     text-align: left;
@@ -86,3 +96,14 @@
     text-decoration: underline;
   }
   
+
+#spanLeft{
+  position: absolute;
+  top: 3vh;
+  left: 8vw;
+}
+#spanRight{
+  position: absolute;
+    top: 3vh;
+    right: 8vw;
+}

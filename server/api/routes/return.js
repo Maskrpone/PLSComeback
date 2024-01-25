@@ -73,7 +73,7 @@ router.post("/", async (req, res) => {
       { username: req.body.username },
       {
         $set: {
-          [`history.items.${req.body.name}.realReturnDate`]: new Date(),
+          [`history.items.${req.body.name}.realReturnDate`]: new Date().toISOString(),
           [`history.items.${req.body.name}.isLate`]:
             new Date() > new Date(historyItem.plannedReturnDate),
         },

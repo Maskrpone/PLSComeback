@@ -15,6 +15,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f6f1fd;
 }
+.Center{
+  min-height: 83vh;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
