@@ -37,7 +37,7 @@ export function Footer() {
         <p className='names'>CREPIN Gaspard, DEPARIS Hippolyte, ESPRIET Charles, HAGE Rémi, HOSTE Matthieu, LANGER Camille, MANY Hugo, VICO Isaure</p>
       </div>
       <div className='center-section'>
-        <Link to="/pages/login" className='disconnect-link' onClick={handleDisconnect}>Disconnect</Link>
+        <Link to="/" className='disconnect-link' onClick={handleDisconnect}>Disconnect</Link>
       </div>
       <div className='right-section'>
         <p>Credit :</p>
