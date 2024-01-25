@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
     res.status(201).json(fournitureEnregistree);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Erreur Serveur" });
+    res.status(500).json({ message: "Server Error" });
   }
 });
 
@@ -48,7 +48,7 @@ router.put("/:name/modify", async (req, res) => {
       { new: true },
     );
 
-    if (!updateSupply) return res.status(403).send("Élément non trouvé");
+    if (!updateSupply) return res.status(403).send("Element not found");
     res.status(201).json(updateSupply);
   } catch (error) {
     console.error(error);
