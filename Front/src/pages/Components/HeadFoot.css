@@ -1,12 +1,12 @@
 .header-container {
   position: relative;
-    display: flex;
-    justify-content: space-between;
-    top: 0px;
-    height: 10vh;
-    width: 100vw;
-    color: white;
-    background-color: #3f2a56;
+  display: flex;
+  justify-content: center;
+  top: 0px;
+  height: 10vh;
+  width: 100vw;
+  color: white;
+  background-color: #3f2a56;
 }
 
 .header-container .logo {

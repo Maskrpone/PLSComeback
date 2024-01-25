@@ -8,14 +8,16 @@ export function Header() {
   return (
     <div className="header-container">
       <div className="logo">
-      <Link to="/pages/home" className="Lien">
-          <img src="#" />
-        </Link>
+     
         
       </div>
+            <Link to="/pages/home" className="Lien">
+
       <div className="titre">
-        <h1>PLSComeBack</h1>
+        <img src="https://media.discordapp.net/attachments/1198928178903777300/1200057810088644618/logo.png?ex=65c4cbed&is=65b256ed&hm=d943e3a76cf03e0eac03e702e553e4da1e057fffa21f16d2fcb1d2058db0f4d8&=&format=webp&quality=lossless&width=1155&height=385" alt="" />
       </div>
+      </Link>
+
       <div className="boutonClient">
         <Link to="/pages/ficheClient" className="Lien">
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
