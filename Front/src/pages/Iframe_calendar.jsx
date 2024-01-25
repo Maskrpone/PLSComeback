@@ -416,7 +416,7 @@ function App() {
             allDay: true,
             status: event.status,
             color: event.color,
-            editable: true,
+            editable: false,
         };
     };
 
@@ -484,7 +484,21 @@ function App() {
     useEffect(() => {
         // Utilisez une fonction pour crÃ©er myEvents lorsque events change
         const updateMyEvents = () => {
-            const newMyEvents = jsonData;
+            const specificCookie = Cookies.get('user_data');
+            const jsonCookie= JSON.parse(specificCookie);
+            const prenom = jsonCookie.prenom;
+            const nom = jsonCookie.nom;
+
+            const newMyEvents = jsonData.map(event => {
+                // Vérifie si le title correspond au format "prenom nom"
+                if (event.title === prenom + " " + nom) {
+                    // Met à jour la propriété editable seulement pour l'utilisateur correspondant
+                    return { ...event, editable: true };
+                }
+
+                // Aucune mise à jour nécessaire pour les autres éléments
+                return event;
+            });
 
 
             // Mise Ã  jour de myEvents avec les nouveaux Ã©vÃ©nements

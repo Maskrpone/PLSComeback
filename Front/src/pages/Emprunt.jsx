@@ -9,6 +9,7 @@ import "./Popup.css";
 import axios from "axios";
 import qs from "qs";
 import { API_IP } from "../Constants";
+import Cookies from "js-cookie";
 
 export let jsonData = [
 	{
