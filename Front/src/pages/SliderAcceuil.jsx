@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import Slider from 'react-slick';
 import Arrow from './Arrow'
+import Cookies from "js-cookie";
 
 
 
 function SliderAcceuil({ pictures }) {
-    let admin = false;
+
+    const myCookieValue = Cookies.get('user_data');
+    let admin = (myCookieValue !== undefined) ? JSON.parse(myCookieValue).isAdmin : false;
 
     const [isVisible, setIsVisible] = useState(false);
 

@@ -10,6 +10,7 @@ import { Footer, Header } from "./Components/HeadFoot";
 import axios from "axios";
 import qs from "qs";
 import { API_IP } from "../Constants";
+import BoutonRetour from "./Components/BoutonRetour";
 
 function Machines() {
   const [machineData, setMachineData] = useState([]);
@@ -38,6 +39,8 @@ function Machines() {
   return (
     <>
       <Header />
+      <BoutonRetour url="/pages/home"/>
+
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"

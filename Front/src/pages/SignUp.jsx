@@ -133,7 +133,7 @@ function Signup() {
 					console.log(JSON.stringify(response.data));
 
 					if (response.status === 200) {
-						navigate("/pages/next");
+						navigate("/pages/home");
 					}
 				} else {
 					// Le nom d'utilisateur existe déjà, gérer en conséquence
@@ -164,7 +164,7 @@ function Signup() {
 			/>
 			<h1>PleaseComeBack</h1>
 			<div>
-				<BoutonRetour url="/pages/login" />
+				<BoutonRetour url="/" />
 				<ZoneSaisieTexte label="Name " onChange={handleNameChange} />
 				<ZoneSaisieTexte label="Surname " onChange={handleSurnameChange} />
 				<ZoneSaisieTexte label="Mail " onChange={handleMailChange} />

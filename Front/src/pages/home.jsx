@@ -26,9 +26,6 @@ function Home(){
 
             </div>
 
-            <Link to="/pages/ficheClient"> Fiche_client </Link>
-            <Link to="/pages/pages_emprunt"> Emprunt </Link>
-            <Link to="/pages/Login"> Login </Link>
             <Footer/>
         </>
     )
