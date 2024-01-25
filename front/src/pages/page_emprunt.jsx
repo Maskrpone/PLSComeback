@@ -4,7 +4,38 @@ import {Link} from "react-router-dom";
 import {Footer,Header} from "./Components/HeadFoot"
 import BoutonRetour from './Components/BoutonRetour';
 
+// async function ToolsInfo() {
+//     const url="http://10.224.1.231:3000/history" ;
+//     fetch(url, {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     })
 
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error(response.statusText);
+//             }
+//             return response.json();
+
+//         })
+//         .then(data => {
+//             dataToShare(data)
+//         })
+//         .catch(error => {
+//             console.error(error);
+            
+//         });
+
+
+// }
+// function dataToShare(json){
+//     var id = json["id"];
+//     var name = json["name"];
+    
+        
+//  }
 const Page_emprunt=()=>{
     const [searchTerm, setSearchTerm] = useState('');
 
