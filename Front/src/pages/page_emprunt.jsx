@@ -35,8 +35,8 @@ const Page_emprunt = () => {
                         const entry = new User(
                             item,
                             user.username,
-                            new Date(userHistory[item].plannedReturnDate).toISOString() || "N/A",
-                            new Date(userHistory[item].realReturnDate).toISOString() || "N/A"
+                            userHistory[item].plannedReturnDate || "N/A",
+                            userHistory[item].realReturnDate || "N/A"
                         );
                         // On ajoute l'objet User à la liste des utilisateurs
                         setUsers((users) => [...users, entry]);

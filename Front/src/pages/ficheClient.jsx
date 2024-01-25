@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Slider.css";
 import "./Calendar.css";
 import "./ButtonResa.css";
+import { QRCode } from "react-qrcode-logo";
 import Cookies from "js-cookie";
 
 let DATA_EXAMPLES;
@@ -70,47 +71,47 @@ function FicheClient() {
 		// Extract the items from history
 		const items = DATA_EXAMPLES.history.items;
 
-    console.log(items);
+		console.log(items);
 
-    // Filter data based on type and update state accordingly, also add the name of the item
-    const type0FilteredData = Object.values(items).filter(
-      (item) => item.type === 0,
-    );
-    const type1FilteredData = Object.values(items).filter(
-      (item) => item.type === 1,
-    );
-    const type2FilteredData = Object.values(items).filter(
-      (item) => item.type === 2,
-    );
+		// Filter data based on type and update state accordingly, also add the name of the item
+		const type0FilteredData = Object.values(items).filter(
+			(item) => item.type === 0,
+		);
+		const type1FilteredData = Object.values(items).filter(
+			(item) => item.type === 1,
+		);
+		const type2FilteredData = Object.values(items).filter(
+			(item) => item.type === 2,
+		);
 
-    // Loop through the filtered data and add the name of the item found in items
-    for (const item of type0FilteredData) {
-      // find item._id in items and add the name to the object
-      const item_name = Object.keys(items).find(
-        (key) => items[key]._id === item._id,
-      );
-      item.name = item_name;
-    }
+		// Loop through the filtered data and add the name of the item found in items
+		for (const item of type0FilteredData) {
+			// find item._id in items and add the name to the object
+			const item_name = Object.keys(items).find(
+				(key) => items[key]._id === item._id,
+			);
+			item.name = item_name;
+		}
 
-    for (const item of type1FilteredData) {
-      // find item._id in items and add the name to the object
-      const item_name = Object.keys(items).find(
-        (key) => items[key]._id === item._id,
-      );
-      item.name = item_name;
-    }
+		for (const item of type1FilteredData) {
+			// find item._id in items and add the name to the object
+			const item_name = Object.keys(items).find(
+				(key) => items[key]._id === item._id,
+			);
+			item.name = item_name;
+		}
 
-    for (const item of type2FilteredData) {
-      // find item._id in items and add the name to the object
-      const item_name = Object.keys(items).find(
-        (key) => items[key]._id === item._id,
-      );
-      item.name = item_name;
-    }
+		for (const item of type2FilteredData) {
+			// find item._id in items and add the name to the object
+			const item_name = Object.keys(items).find(
+				(key) => items[key]._id === item._id,
+			);
+			item.name = item_name;
+		}
 
-    setType0Data(type0FilteredData);
-    setType1Data(type1FilteredData);
-    setType2Data(type2FilteredData);
+		setType0Data(type0FilteredData);
+		setType1Data(type1FilteredData);
+		setType2Data(type2FilteredData);
 	}
 
 	return (
@@ -125,14 +126,32 @@ function FicheClient() {
 								<th>DATE</th>
 								<th>NAME</th>
 								<th>QUANTITY</th>
+								<th>QR CODE</th>
 							</tr>
 						</thead>
 						<tbody>
 							{type1Data.map((item, index) => (
-								<tr key={index}>	
+								<tr key={index}>
 									<td>{item.date.split("T")[0]}</td>
 									<td>{item.name}</td>
 									<td>{item.quantity}</td>
+									<td>
+										<QRCode
+											value={{
+												username: jsonCookie.username,
+												name: item.name,
+												quantity: item.quantity,
+												plannedReturnDate: item.date,
+											}}
+											size={100}
+											fgColor={"#3f2a55"}
+											eyeColor={"#ff5c39"}
+											enableCORS={true}
+											qrStyle="dots"
+											eyeRadius={10}
+											id={"QR"}
+										/>
+									</td>
 								</tr>
 							))}
 						</tbody>
@@ -147,6 +166,7 @@ function FicheClient() {
 								<th>DATE</th>
 								<th>NAME</th>
 								<th>QUANTITY</th>
+								<th>QR CODE</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -155,6 +175,23 @@ function FicheClient() {
 									<td>{item.date.split("T")[0]}</td>
 									<td>{item.name}</td>
 									<td>{item.quantity}</td>
+									<td>
+										<QRCode
+											value={{
+												username: jsonCookie.username,
+												name: item.name,
+												quantity: item.quantity,
+												plannedReturnDate: item.date,
+											}}
+											size={100}
+											fgColor={"#3f2a55"}
+											eyeColor={"#ff5c39"}
+											enableCORS={true}
+											qrStyle="dots"
+											eyeRadius={10}
+											id={"QR"}
+										/>
+									</td>
 								</tr>
 							))}
 						</tbody>
@@ -169,14 +206,33 @@ function FicheClient() {
 								<th>DATE</th>
 								<th>NAME</th>
 								<th>QUANTITY</th>
+								<th>QR CODE</th>
 							</tr>
 						</thead>
 						<tbody>
 							{type2Data.map((item, index) => (
+								console.log({username: jsonCookie.username, name: item.name, quantity: item.quantity, plannedReturnDate: item.date}),
 								<tr key={index}>
 									<td>{item.date.split("T")[0]}</td>
 									<td>{item.name}</td>
 									<td>{item.quantity}</td>
+									<td>
+										<QRCode
+											value={{
+												username: jsonCookie.username,
+												name: item.name,
+												quantity: item.quantity,
+												plannedReturnDate: item.date,
+											}}
+											size={100}
+											fgColor={"#3f2a55"}
+											eyeColor={"#ff5c39"}
+											enableCORS={true}
+											qrStyle="dots"
+											eyeRadius={10}
+											id={"QR"}
+										/>
+									</td>
 								</tr>
 							))}
 						</tbody>

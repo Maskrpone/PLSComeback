@@ -467,7 +467,7 @@ function App() {
 					})
 					.then((response) => {
 						console.log("Mise à jour réussie :", response.data);
-						alert("Update successfull");
+						alert("Update successful");
 					})
 					.catch((error) => {
 						console.error("Erreur lors de la mise à jour :", error);
