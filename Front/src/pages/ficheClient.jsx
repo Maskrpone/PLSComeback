@@ -128,9 +128,9 @@ function FicheClient() {
 							</tr>
 						</thead>
 						<tbody>
-							{type0Data.map((item, index) => (
-								<tr key={index}>
-									<td>{item.date.slice(0, -43)}</td>
+							{type1Data.map((item, index) => (
+								<tr key={index}>	
+									<td>{item.date.split("T")[0]}</td>
 									<td>{item.name}</td>
 									<td>{item.quantity}</td>
 								</tr>
@@ -150,9 +150,9 @@ function FicheClient() {
 							</tr>
 						</thead>
 						<tbody>
-							{type1Data.map((item, index) => (
+							{type0Data.map((item, index) => (
 								<tr key={index}>
-									<td>{item.date.slice(0, -43)}</td>
+									<td>{item.date.split("T")[0]}</td>
 									<td>{item.name}</td>
 									<td>{item.quantity}</td>
 								</tr>
@@ -174,7 +174,7 @@ function FicheClient() {
 						<tbody>
 							{type2Data.map((item, index) => (
 								<tr key={index}>
-									<td>{item.date.slice(0, -43)}</td>
+									<td>{item.date.split("T")[0]}</td>
 									<td>{item.name}</td>
 									<td>{item.quantity}</td>
 								</tr>
