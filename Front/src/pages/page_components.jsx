@@ -64,6 +64,36 @@ const Page_components = () => {
 
 	const handleClick = (str) => {
 		console.log(str);
+		let UpdateSuccess = false;
+		for (let i = 0; i < str.length; i++){
+			let name_object = str[i].nom;
+			let taille_object = str[i].taille;
+
+				const fetchData = async () => {
+					try {
+						await axios.put(`http://${API_IP}:3000/supplies/` + name_object + '/modify', {"quantity": taille_object})
+					.then(response => {
+						UpdateSuccess = true;
+							console.log('Mise à jour réussie :', response.data);
+						})
+							.catch(error => {
+								UpdateSuccess = false;
+								console.error('Erreur lors de la mise à jour :', error);
+							});
+					} catch (error) {
+						console.log(error);
+					}
+				};
+
+				fetchData();
+		}
+		if (UpdateSuccess === true){
+			alert("Mise à jour réussie");
+		}
+		else {
+			alert("Mise à jour échouée");
+		}
+		console.log(str);
 	};
 
 	const filteredUsers = users.filter((user) =>
