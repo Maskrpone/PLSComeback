@@ -35,6 +35,7 @@ function Emprunt() {
 				const formattedData = response.data.map((tool) => ({
 					title: tool.name,
 					url: tool.image,
+          calendar: tool.calendar
 				}));
 
 				console.log(formattedData);
