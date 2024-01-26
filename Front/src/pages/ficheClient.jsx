@@ -13,8 +13,6 @@ import "./ButtonResa.css";
 import { QRCode } from "react-qrcode-logo";
 import Cookies from "js-cookie";
 
-const FRONT_IP = "192.168.237.166";
-
 let DATA_EXAMPLES;
 
 function FicheClient() {
@@ -133,28 +131,7 @@ function FicheClient() {
 		<>
 			<Header />
 			<div id="ficheClient">
-				<div className="TableClient" id="TableClientConsommable">
-					{/* <h3>CONSUMABLES</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>DATE</th>
-								<th>NAME</th>
-								<th>QUANTITY</th>
-							</tr>
-						</thead>
-						<tbody>
-							{type1Data.map((item, index) => (
-								<tr key={index}>
-									<td>{item.date.split("T")[0]}</td>
-									<td>{item.name}</td>
-									<td>{item.quantity}</td>
-								</tr>
-							))}
-						</tbody>
-					</table> */}
-				</div>
-
+				
 				<div class="TableClient" id="tableClientEmprunt">
 					<h3> LOAN</h3>
 					<table>
@@ -175,7 +152,7 @@ function FicheClient() {
 
 									<td onClick={() => setIsFullscreen(true)}>
 										<QRCode
-											value={`http:/${FRONT_IP}:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
+											value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
 											size={isFullscreen ? window.innerWidth : 100}
 											fgColor={"#3f2a55"}
 											eyeColor={"#ff5c39"}
@@ -218,7 +195,7 @@ function FicheClient() {
 											<td>{item.quantity}</td>
 											<td onClick={() => setIsFullscreen(true)}>
 												<QRCode
-													value={`http:/${FRONT_IP}:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
+													value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
 													size={isFullscreen ? window.innerWidth : 100}
 													fgColor={"#3f2a55"}
 													eyeColor={"#ff5c39"}
@@ -246,7 +223,7 @@ function FicheClient() {
 													onClick={() => setIsFullscreen(false)}
 												>
 													<QRCode
-														value={`http:/${FRONT_IP}:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
+														value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
 														size={window.innerWidth}
 														fgColor={"#3f2a55"}
 														eyeColor={"#ff5c39"}

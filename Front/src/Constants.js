@@ -1,1 +1,1 @@
-export const API_IP = "192.168.237.89";
+export const API_IP = "10.224.1.231";

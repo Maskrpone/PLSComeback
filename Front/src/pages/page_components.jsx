@@ -91,7 +91,7 @@ const Page_components = () => {
 
 			fetchData();
 		}
-		alert("Mise à jour réussie");
+		alert("Update successfull");
 		console.log(str);
 	};
 
