@@ -82,7 +82,7 @@ function FicheClient() {
 		const type1FilteredData = Object.values(items).filter(
 			(item) => item.type === 1,
 		);
-		const type2FilteredData = Object.values(items).filter(
+		let type2FilteredData = Object.values(items).filter(
 			(item) => item.type === 2,
 		);
 
@@ -97,11 +97,12 @@ function FicheClient() {
 			item.name = item_name;
 		}
 
-
-		console.log(type0FilteredData);
-		type0FilteredData = type0FilteredData.filter((item) => item.realReturnDate === null);
-		console.log(type0FilteredData);
-
+		type0FilteredData = type0FilteredData.filter(
+			(item) => item.realReturnDate === null,
+		);
+		type2FilteredData = type2FilteredData.filter(
+			(item) => item.realReturnDate === null,
+		);
 
 		for (const item of type1FilteredData) {
 			// find item._id in items and add the name to the object
@@ -214,7 +215,7 @@ function FicheClient() {
 								<th>DATE</th>
 								<th>NAME</th>
 								<th>QUANTITY</th>
-								{/* <th>QR CODE</th> */}
+								<th>QR CODE</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -231,15 +232,10 @@ function FicheClient() {
 											<td>{item.date.split("T")[0]}</td>
 											<td>{item.name}</td>
 											<td>{item.quantity}</td>
-											{/* <td>
+											<td onClick={() => setIsFullscreen(true)}>
 												<QRCode
-													value={{
-														username: jsonCookie.username,
-														name: item.name,
-														quantity: item.quantity,
-														plannedReturnDate: item.date,
-													}}
-													size={100}
+													value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
+													size={isFullscreen ? window.innerWidth : 100}
 													fgColor={"#3f2a55"}
 													eyeColor={"#ff5c39"}
 													enableCORS={true}
@@ -247,7 +243,7 @@ function FicheClient() {
 													eyeRadius={10}
 													id={"QR"}
 												/>
-											</td> */}
+											</td>
 
 											{isFullscreen && (
 												<div
