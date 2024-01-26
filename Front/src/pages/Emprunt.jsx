@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import "./Emprunt.css";
 import { Footer, Header } from "./Components/HeadFoot";
@@ -9,20 +9,19 @@ import "./Popup.css";
 import axios from "axios";
 import qs from "qs";
 import { API_IP } from "../Constants";
-import Cookies from "js-cookie";
 
 export let jsonData = [
 	{
-		id: 1,
-		object_name: "perceuse",
-		title: "personne",
-		description: "",
-		start: "2024-01-08T13:00",
-		end: "2024-01-08T13:45",
-		allDay: true,
-		color: "#009788",
-		editable: false,
-	},
+		/*"id": 1,
+		"object_name" : "perceuse",
+		"title": "personne",
+		"description": "",
+		"start": "2024-01-08T13:00",
+		"end": "2024-01-08T13:45",
+		"allDay": true,
+		"color": "#009788",
+		"editable": false*/
+	}
 ];
 
 function Emprunt() {
@@ -36,7 +35,7 @@ function Emprunt() {
 				const formattedData = response.data.map((tool) => ({
 					title: tool.name,
 					url: tool.image,
-					calendar: tool.calendar,
+					calendar: tool.calendar
 				}));
 
 				console.log(formattedData);
@@ -110,26 +109,19 @@ function Emprunt() {
 
 	const openPopup = (index) => {
 		const updatedJsonData = [...jsonData];
-		// console.log("AAAAAAAAAAAAAAA");
-		// console.log(jsonData);
-		// console.log(updatedJsonData);
-		// console.log(pictures[index].calendar);
-		// console.log(pictures[index].title);
 
 		try {
 			// Modifiez l'objet spécifique avec le nouveau titre
 			updatedJsonData[index] = JSON.parse(pictures[index].calendar);
-			// console.log("CCCCCCCCCC");
-			// console.log(updatedJsonData[index]);
+
 			// Mettez à jour le tableau jsonData
 			jsonData = updatedJsonData[index];
-		} catch (error) {
-			jsonData = [
-				{
-					object_name: pictures[index].title,
-				},
-			];
-			console.error("Erreur d'analyse JSON :", error.message);
+		}
+		catch (error){
+			jsonData = [{
+				object_name: pictures[index].title
+			}];
+			console.error('Erreur d\'analyse JSON :', error.message);
 		}
 		console.log(jsonData);
 		setSelectedImage(index);
@@ -141,20 +133,16 @@ function Emprunt() {
 
 	return (
 		<>
-			<Header />
-			<div class="mainEmprunt">
+			<Header/>
 			<header>
 				<h1> Tool rental </h1>
-				<hr></hr>
 			</header>
 
-			<BoutonRetour url="/" />
+			<BoutonRetour url="/"/>
 			<div id="wrapper">
 				{pictures.map((picture, index) => (
 					<div key={index} className="card" onClick={() => openPopup(index)}>
-						<div className="image">
-							<img src={picture.url} alt={picture.title} />
-						</div>
+						<img src={picture.url} alt={picture.title} />
 						<>{picture.title}</>
 					</div>
 				))}
@@ -162,19 +150,18 @@ function Emprunt() {
 				{selectedImage !== null && (
 					<div className="popup">
 						<div className="popup-content">
-							<span className="text-white" onClick={closePopup}>
-								&times;
-							</span>
+              <span className="text-white" onClick={closePopup}>
+                &times;
+              </span>
 							<div className="block m-auto text-white text-center text-3xl ">
 								<span className="text-white">{jsonData[0].object_name}</span>
 							</div>
 							<div className="bg-black">
-								<PageTestCalendar jsonData={jsonData} />
+								<PageTestCalendar jsonData={jsonData}/>
 							</div>
 						</div>
 					</div>
 				)}
-			</div>
 			</div>
 			<Footer />
 		</>
