@@ -22,6 +22,8 @@ function FicheClient() {
 	// Afficher tous les cookies
 	console.log(allCookies);
 
+	const [isFullscreen, setIsFullscreen] = useState(false);
+
 	// Ou récupérer un cookie spécifique par son nom
 	const specificCookie = Cookies.get("user_data");
 
@@ -170,23 +172,24 @@ function FicheClient() {
 							</tr>
 						</thead>
 						<tbody>
-							{type0Data.map((item, index) => (
-								<tr key={index}>
+						{type0Data.map((item, index) => (
+  <tr key={index}>
 									<td>{item.date.split("T")[0]}</td>
 									<td>{item.name}</td>
 									<td>{item.quantity}</td>
-									<td>
-										<QRCode
-											value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
-											size={100}
-											fgColor={"#3f2a55"}
-											eyeColor={"#ff5c39"}
-											enableCORS={true}
-											qrStyle="dots"
-											eyeRadius={10}
-											id={"QR"}
-										/>
-									</td>
+
+									<td onClick={() => setIsFullscreen(true)}>
+      <QRCode
+        value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
+        size={isFullscreen ? window.innerWidth : 100}
+        fgColor={"#3f2a55"}
+        eyeColor={"#ff5c39"}
+        enableCORS={true}
+        qrStyle="dots"
+        eyeRadius={10}
+        id={"QR"}
+      />
+    </td>
 								</tr>
 							))}
 						</tbody>
@@ -235,16 +238,47 @@ function FicheClient() {
 													id={"QR"}
 												/>
 											</td> */}
+											
+											{isFullscreen && (
+  <div
+    style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      display: 'flex',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      zIndex: 1000,
+    }}
+    onClick={() => setIsFullscreen(false)}
+  >
+    <QRCode
+      value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
+      size={window.innerWidth}
+      fgColor={"#3f2a55"}
+      eyeColor={"#ff5c39"}
+      enableCORS={true}
+      qrStyle="dots"
+      eyeRadius={10}
+      id={"QR"}
+    />
+  </div>
+)}
 										</tr>
 									)
 								),
 							)}
 						</tbody>
 					</table>
+					
 				</div>
 			</div>
 			<Footer />
 		</>
+		
 	);
 }
 

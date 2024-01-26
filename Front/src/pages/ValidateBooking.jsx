@@ -22,11 +22,11 @@ function ValidateBooking() {
   // console.log(plannedReturnDate); 
   const validateBooking = async () => {
     try {
-      const response = await axios.post(`http://${API_IP}:3000/reserve`, {
+      const response = await axios.post(`http://${API_IP}:3000/return`, {
         username: username,
         name: name,
-        quantity: quantity,
-        plannedReturnDate: plannedReturnDate,
+        // quantity: quantity,
+        // plannedReturnDate: plannedReturnDate,
     });
       //setBooking(response.data);
       alert("Booking validated !")
