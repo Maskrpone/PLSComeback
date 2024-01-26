@@ -34,6 +34,12 @@ table{
     border-right: 2px solid black   ;
     padding: 4px;
     font-weight: lighter;
+    width: 25vw;
+
+}
+.TableClient th:nth-child(3),.TableClient td:nth-child(3){
+    width: 10px;
+
 }
 #TableClientConsommable{
     border-left: solid 5px #d5adf9
@@ -53,6 +59,13 @@ table{
 .mainEmprunt{
     min-height: 84vh;
 }
+.ficheClient tr td{}
 /* 
 
 */
+
+@media only screen and (min-width: 900px) {
+    td canvas{
+        width: 100%;
+    }
+}
