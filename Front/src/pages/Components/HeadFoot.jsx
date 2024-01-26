@@ -54,7 +54,7 @@ export function Footer() {
       </div>
       <div className='right-section'>
         <p>Credit :</p>
-        <p className='credit'>Photos FABLAB</p>
+        <p className='credit'> FABLAB's photos</p>
       </div>
     </div>
   )
