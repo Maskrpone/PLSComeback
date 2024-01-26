@@ -99,7 +99,7 @@ function SliderEmprunt({ pictures }) {
             &times;
           </span>
                         <div className="block m-auto text-white text-center text-3xl">
-                            <span className="text-black">{jsonData2[0].object_name}</span>
+                            <span className="text-black">{jsonData2[jsonData2.length-1].object_name}</span>
                         </div>
                         <div className="bg-black">
                             <PageTestCalendar jsonData2={jsonData2} />

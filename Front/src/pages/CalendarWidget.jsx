@@ -1,6 +1,8 @@
 // CalendarWidget.js
 import React, { useState } from 'react';
 import Arrow from './Arrow';
+import PageTestCalendar from "./Iframe_calendar_machines";
+import {jsonData2} from "./SliderEmprunt";
 
 const CalendarWidget = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,18 +20,13 @@ const CalendarWidget = () => {
             <span class="button-text">Booking</span>
           </button>
       {isVisible && (
-        <><iframe
-            class="CalendarOutlook"
-          title="Calendrier Outlook"
-          src="https://outlook.office365.com/owa/calendar/8d4bcdcaad534ad6b93bd46dd6af4f00@student.junia.com/a6c73d750e8a490bbf6521864f8eaa7c9348958668257446464/calendar.html"
-          width="100%"
-          height="600"
-          frameBorder="0"
-          scrolling="auto"
-        ></iframe>
-        <button class="BACK" onClick={toggleVisibility}>
-        <Arrow className="slick-prev" direction="prev" />
-        </button>
+          <>
+              <div className="block m-auto text-white text-center text-3xl">
+                  <span className="text-black">{jsonData2[0].object_name}</span>
+              </div>
+              <div className="bg-black">
+                  <PageTestCalendar jsonData2={jsonData2}/>
+              </div>
           </>
       )}
     </div>

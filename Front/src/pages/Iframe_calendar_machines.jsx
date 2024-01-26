@@ -17,6 +17,7 @@ import {jsonData2} from "./SliderEmprunt";
 import axios from "axios";
 import {API_IP} from "../Constants";
 import Cookies from "js-cookie";
+import { json } from "react-router-dom";
 
 
 setOptions({
@@ -426,29 +427,22 @@ function App() {
         const calendarInfo = extractCalendarInfo();
         // Convertir les donnÃ©es en format JSON
         const jsonData2 = JSON.stringify(calendarInfo, null, 2);
-        console.log("GGGGGGGGGGGGGGGGGGGG");
-        console.log(jsonData2);
-        console.log(calendarInfo[0]);
         const name_object = calendarInfo[0].object_name;
-        console.log(calendarInfo[0]);
 
-        // Afficher un message de confirmation Ã  l'utilisateur
-        setSnackbarOpen(true);
         const fetchData = async () => {
             try {
                 await axios.put(`http://${API_IP}:3000/machines/` + name_object, {"calendar": jsonData2})
                     .then(response => {
-                        console.log('Mise à jour réussie :', response.data);
-                        alert("Mise à jour réussie");
+                        console.log('Update succeed :', response.data);
+                        alert("Update succeed");
                     })
                     .catch(error => {
-                        console.error('Erreur lors de la mise à jour :', error);
-                        alert("Mise à jour échouée");
+                        console.error('Update failed :', error);
+                        alert("Update failed");
                     });
             } catch (error) {
                 console.log(error);
             }
-
 
             // Post dans reservation
             try {
@@ -471,6 +465,7 @@ function App() {
             } catch (error) {
                 console.log(error);
             }
+
         };
 
         fetchData();
@@ -485,14 +480,14 @@ function App() {
     }, [myEvents, importEventInfo]);
 
     const onImport = useCallback(() => {
-        const jsonData2String = '[{"id":1,"title":"Lunch @ Butchers","description":"","start":"2024-01-08T13:00","end":"2024-01-08T13:45","allDay":true,"color":"#009788","editable":false},{"id":2,"title":"General orientation","description":"","start":"2024-01-24T15:00","end":"2024-01-24T16:00","allDay":true,"color":"#ff9900","editable":false},{"id":3,"title":"Dexter BD","description":"","start":"2024-01-23T18:00","end":"2024-01-23T22:00","allDay":true,"color":"#3f51b5","editable":false},{"id":4,"title":"Stakeholder mtg.","description":"","start":"2024-01-25T10:30","end":"2024-01-25T11:30","allDay":true,"color":"#f44437","editable":false},{"id":"mbsc_1","title":"Test","start":"2024-01-09T23:00:00.000Z","end":"2024-01-12T23:00:00.000Z","allDay":true,"status":"busy","editable":false},{"id":"mbsc_2","title":"zgrlgnrljgeirjgierjg","start":"2024-01-18T23:00:00.000Z","end":"2024-01-21T23:00:00.000Z","allDay":true,"status":"busy","editable":false},{"id":"mbsc_3","title":"zehef","start":"2024-01-02T23:00:00.000Z","end":"2024-01-04T23:00:00.000Z","allDay":true,"status":"busy","editable":false}]';
-        const jsonData2 = JSON.parse(jsonData2String);
+        const jsonDataString = '[{"id":1,"title":"Lunch @ Butchers","description":"","start":"2024-01-08T13:00","end":"2024-01-08T13:45","allDay":true,"color":"#009788","editable":false},{"id":2,"title":"General orientation","description":"","start":"2024-01-24T15:00","end":"2024-01-24T16:00","allDay":true,"color":"#ff9900","editable":false},{"id":3,"title":"Dexter BD","description":"","start":"2024-01-23T18:00","end":"2024-01-23T22:00","allDay":true,"color":"#3f51b5","editable":false},{"id":4,"title":"Stakeholder mtg.","description":"","start":"2024-01-25T10:30","end":"2024-01-25T11:30","allDay":true,"color":"#f44437","editable":false},{"id":"mbsc_1","title":"Test","start":"2024-01-09T23:00:00.000Z","end":"2024-01-12T23:00:00.000Z","allDay":true,"status":"busy","editable":false},{"id":"mbsc_2","title":"zgrlgnrljgeirjgierjg","start":"2024-01-18T23:00:00.000Z","end":"2024-01-21T23:00:00.000Z","allDay":true,"status":"busy","editable":false},{"id":"mbsc_3","title":"zehef","start":"2024-01-02T23:00:00.000Z","end":"2024-01-04T23:00:00.000Z","allDay":true,"status":"busy","editable":false}]';
+        const jsonData = JSON.parse(jsonDataString);
 
 
         // Afficher un message de confirmation Ã  l'utilisateur
         setSnackbarOpen(true);
 
-        console.log('Calendrier importÃ© en JSON:', jsonData2);
+        console.log('Calendrier importÃ© en JSON:', jsonData);
 
     }, [ImportCalendarInfo]);*/
     /*

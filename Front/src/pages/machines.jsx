@@ -52,7 +52,7 @@ function Machines() {
 
         <SliderEmprunt pictures={machineData} />
 
-        <CalendarWidget />
+          {/*<CalendarWidget />*/}
       </div>
       <Footer />
     </>
