@@ -134,15 +134,21 @@ function Emprunt() {
 	return (
 		<>
 			<Header/>
+			<div class="mainEmprunt">
+
 			<header>
 				<h1> Tool rental </h1>
+				<hr></hr>
+
 			</header>
 
 			<BoutonRetour url="/"/>
 			<div id="wrapper">
 				{pictures.map((picture, index) => (
 					<div key={index} className="card" onClick={() => openPopup(index)}>
-						<img src={picture.url} alt={picture.title} />
+						<div className="image">
+							<img src={picture.url} alt={picture.title} />
+						</div>
 						<>{picture.title}</>
 					</div>
 				))}
@@ -162,6 +168,7 @@ function Emprunt() {
 						</div>
 					</div>
 				)}
+			</div>
 			</div>
 			<Footer />
 		</>
