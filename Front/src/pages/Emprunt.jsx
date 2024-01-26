@@ -142,7 +142,7 @@ function Emprunt() {
 
 			</header>
 
-			<BoutonRetour url="/"/>
+			{/* <BoutonRetour url="/"/> */}
 			<div id="wrapper">
 				{pictures.map((picture, index) => (
 					<div key={index} className="card" onClick={() => openPopup(index)}>

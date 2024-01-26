@@ -41,7 +41,7 @@ function Machines() {
   return (
     <>
       <Header />
-      <BoutonRetour url="/pages/home"/>
+      {/* <BoutonRetour url="/pages/home"/> */}
 
       <link
         rel="stylesheet"
