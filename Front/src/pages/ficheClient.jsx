@@ -132,14 +132,13 @@ function FicheClient() {
 			<Header />
 			<div id="ficheClient">
 				<div className="TableClient" id="TableClientConsommable">
-					<h3>CONSUMABLES</h3>
+					{/* <h3>CONSUMABLES</h3>
 					<table>
 						<thead>
 							<tr>
 								<th>DATE</th>
 								<th>NAME</th>
 								<th>QUANTITY</th>
-								{/* <th>QR CODE</th> */}
 							</tr>
 						</thead>
 						<tbody>
@@ -148,27 +147,10 @@ function FicheClient() {
 									<td>{item.date.split("T")[0]}</td>
 									<td>{item.name}</td>
 									<td>{item.quantity}</td>
-									{/* <td>
-										<QRCode
-											value={{
-												username: jsonCookie.username,
-												name: item.name,
-												quantity: item.quantity,
-												plannedReturnDate: item.date,
-											}}
-											size={100}
-											fgColor={"#3f2a55"}
-											eyeColor={"#ff5c39"}
-											enableCORS={true}
-											qrStyle="dots"
-											eyeRadius={10}
-											id={"QR"}
-										/>
-									</td> */}
 								</tr>
 							))}
 						</tbody>
-					</table>
+					</table> */}
 				</div>
 
 				<div class="TableClient" id="tableClientEmprunt">
