@@ -24,9 +24,9 @@ function ValidateBooking() {
     try {
       const response = await axios.post(`http://${API_IP}:3000/return`, {
         username: username,
-        name: name
-        //quantity: quantity,
-        //plannedReturnDate: plannedReturnDate,
+        name: name,
+        // quantity: quantity,
+        // plannedReturnDate: plannedReturnDate,
     });
       //setBooking(response.data);
       alert("Booking validated !")
