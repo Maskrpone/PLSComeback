@@ -12,19 +12,6 @@ import qs from "qs";
 import { API_IP } from "../Constants";
 import BoutonRetour from "./Components/BoutonRetour";
 
-export let jsonData2 = [
-    {
-        /*"id": 1,
-        "object_name" : "perceuse",
-        "title": "personne",
-        "description": "",
-        "start": "2024-01-08T13:00",
-        "end": "2024-01-08T13:45",
-        "allDay": true,
-        "color": "#009788",
-        "editable": false*/
-    }
-];
 
 function Machines() {
   const [machineData, setMachineData] = useState([]);

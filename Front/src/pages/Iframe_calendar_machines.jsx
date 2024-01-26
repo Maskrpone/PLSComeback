@@ -430,7 +430,7 @@ function App() {
         console.log(jsonData2);
         console.log(calendarInfo[0]);
         const name_object = calendarInfo[0].object_name;
-        console.log(calendarInfo);
+        console.log(calendarInfo[0]);
 
         // Afficher un message de confirmation Ã  l'utilisateur
         setSnackbarOpen(true);
@@ -448,6 +448,7 @@ function App() {
             } catch (error) {
                 console.log(error);
             }
+
 
             // Post dans reservation
             try {

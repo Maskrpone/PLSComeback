@@ -9,7 +9,7 @@ import Modal from 'react-modal';
 
 export let jsonData2 = [
     {
-        "id": 1,
+        /*"id": 1,
         "object_name" : "perceuse",
         "title": "personne",
         "description": "",
@@ -17,7 +17,7 @@ export let jsonData2 = [
         "end": "2024-01-08T13:45",
         "allDay": true,
         "color": "#009788",
-        "editable": false
+        "editable": false*/
     }
 ];
 
