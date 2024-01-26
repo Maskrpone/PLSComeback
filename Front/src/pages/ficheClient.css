@@ -5,10 +5,18 @@
 }
 h1{
     font-size: 5vh;
-    margin: 1.25vh 0px;
+    padding: 1.25vh 5vw;
 }
 h3{
     padding: 15px;
+}
+hr{
+    border: 3px solid #3f2a56;
+    border-radius: 20px;
+    width: 90%;
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
 }
 .TableClient{
     border-radius: 5px;
@@ -40,6 +48,9 @@ table{
     border-left: solid 5px #e2e2e2
     ;
 
+}
+.mainEmprunt{
+    min-height: 84vh;
 }
 /* 
 
