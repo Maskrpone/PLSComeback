@@ -126,7 +126,7 @@ function FicheClient() {
 								<th>DATE</th>
 								<th>NAME</th>
 								<th>QUANTITY</th>
-								<th>QR CODE</th>
+								{/* <th>QR CODE</th> */}
 							</tr>
 						</thead>
 						<tbody>
@@ -135,7 +135,7 @@ function FicheClient() {
 									<td>{item.date.split("T")[0]}</td>
 									<td>{item.name}</td>
 									<td>{item.quantity}</td>
-									<td>
+									{/* <td>
 										<QRCode
 											value={{
 												username: jsonCookie.username,
@@ -151,7 +151,7 @@ function FicheClient() {
 											eyeRadius={10}
 											id={"QR"}
 										/>
-									</td>
+									</td> */}
 								</tr>
 							))}
 						</tbody>
@@ -206,35 +206,44 @@ function FicheClient() {
 								<th>DATE</th>
 								<th>NAME</th>
 								<th>QUANTITY</th>
-								<th>QR CODE</th>
+								{/* <th>QR CODE</th> */}
 							</tr>
 						</thead>
 						<tbody>
-							{type2Data.map((item, index) => (
-								console.log({username: jsonCookie.username, name: item.name, quantity: item.quantity, plannedReturnDate: item.date}),
-								<tr key={index}>
-									<td>{item.date.split("T")[0]}</td>
-									<td>{item.name}</td>
-									<td>{item.quantity}</td>
-									<td>
-										<QRCode
-											value={{
-												username: jsonCookie.username,
-												name: item.name,
-												quantity: item.quantity,
-												plannedReturnDate: item.date,
-											}}
-											size={100}
-											fgColor={"#3f2a55"}
-											eyeColor={"#ff5c39"}
-											enableCORS={true}
-											qrStyle="dots"
-											eyeRadius={10}
-											id={"QR"}
-										/>
-									</td>
-								</tr>
-							))}
+							{type2Data.map(
+								(item, index) => (
+									console.log({
+										username: jsonCookie.username,
+										name: item.name,
+										quantity: item.quantity,
+										plannedReturnDate: item.date,
+									}),
+									(
+										<tr key={index}>
+											<td>{item.date.split("T")[0]}</td>
+											<td>{item.name}</td>
+											<td>{item.quantity}</td>
+											{/* <td>
+												<QRCode
+													value={{
+														username: jsonCookie.username,
+														name: item.name,
+														quantity: item.quantity,
+														plannedReturnDate: item.date,
+													}}
+													size={100}
+													fgColor={"#3f2a55"}
+													eyeColor={"#ff5c39"}
+													enableCORS={true}
+													qrStyle="dots"
+													eyeRadius={10}
+													id={"QR"}
+												/>
+											</td> */}
+										</tr>
+									)
+								),
+							)}
 						</tbody>
 					</table>
 				</div>
