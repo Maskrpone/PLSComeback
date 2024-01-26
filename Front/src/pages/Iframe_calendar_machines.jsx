@@ -448,6 +448,28 @@ function App() {
             } catch (error) {
                 console.log(error);
             }
+
+            // Post dans reservation
+            try {
+                const end = new Date(calendarInfo[calendarInfo.length - 1].end).toISOString();
+                console.log(end)
+                const userCookie = JSON.parse(Cookies.get("user_data")) || null;
+                await axios
+                    .post(`http://${API_IP}:3000/reserve`, {
+                        username: userCookie.username,
+                        name: name_object,
+                        quantity: 1,
+                        plannedReturnDate: end,
+                    })
+                    .then((response) => {
+                        console.log("Update succeed :", response.data);
+                    })
+                    .catch((error) => {
+                        console.error("Update failed :", error);
+                    });
+            } catch (error) {
+                console.log(error);
+            }
         };
 
         fetchData();

@@ -427,23 +427,18 @@ function App() {
 		const calendarInfo = extractCalendarInfo();
 		// Convertir les donnÃ©es en format JSON
 		const jsonData = JSON.stringify(calendarInfo, null, 2);
-		console.log("GGGGGGGGGGGGGGGGGGGG");
-		console.log(jsonData);
-		console.log(calendarInfo[0]);
 		const name_object = calendarInfo[0].object_name;
 
-		// Afficher un message de confirmation Ã  l'utilisateur
-		setSnackbarOpen(true);
 		const fetchData = async () => {
 			try {
 				await axios.put(`http://${API_IP}:3000/tools/` + name_object, {"calendar": jsonData})
 					.then(response => {
-						console.log('Mise à jour réussie :', response.data);
-						alert("Mise à jour réussie");
+						console.log('Update succeed :', response.data);
+						alert("Update succeed");
 					})
 					.catch(error => {
-						console.error('Erreur lors de la mise à jour :', error);
-						alert("Mise à jour échouée");
+						console.error('Update failed :', error);
+						alert("Update failed");
 					});
 			} catch (error) {
 				console.log(error);
@@ -462,10 +457,10 @@ function App() {
 						plannedReturnDate: end,
 					})
 					.then((response) => {
-						console.log("Mise à jour réussie :", response.data);
+						console.log("Update succeed :", response.data);
 					})
 					.catch((error) => {
-						console.error("Erreur lors de la mise à jour :", error);
+						console.error("Update failed :", error);
 					});
 			} catch (error) {
 				console.log(error);
