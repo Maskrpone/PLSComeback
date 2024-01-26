@@ -50,7 +50,7 @@ function Machines() {
 
       <div className="Center">
 
-        <SliderEmprunt pictures={machineData} />
+        <SliderEmprunt pictures={machineData}/>
 
           {/*<CalendarWidget />*/}
       </div>

@@ -53,6 +53,8 @@ function SliderEmprunt({ pictures }) {
         try {
             updatedJsonData[index] = JSON.parse(pictures[index].calendar);
             jsonData2 = updatedJsonData;
+            jsonData2 = jsonData2[jsonData2.length-1];
+            console.log(jsonData2);
         } catch (error) {
             console.log(pictures[index].title);
             jsonData2 = [{
@@ -61,7 +63,7 @@ function SliderEmprunt({ pictures }) {
             console.error('Erreur d\'analyse JSON :', error.message);
         }
 
-        console.log(jsonData2);
+        console.log(jsonData2[jsonData2.length-1]);
 
         setSelectedImage(index);
     };
@@ -99,7 +101,7 @@ function SliderEmprunt({ pictures }) {
             &times;
           </span>
                         <div className="block m-auto text-white text-center text-3xl">
-                            <span className="text-black">{jsonData2[jsonData2.length-1].object_name}</span>
+                            <span className="text-black">{jsonData2[0].object_name}</span>
                         </div>
                         <div className="bg-black">
                             <PageTestCalendar jsonData2={jsonData2} />

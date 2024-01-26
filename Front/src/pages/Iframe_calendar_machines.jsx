@@ -172,7 +172,7 @@ function App() {
 
         // Nom et prénom de la personne connectée
         let actualUser = new User(nom,prenom);
-        console.log(jsonData2[0].object_name);
+        console.log(jsonData2);
         const newEvent = {
             id: tempEvent.id,
             object_name: jsonData2[0].object_name,
