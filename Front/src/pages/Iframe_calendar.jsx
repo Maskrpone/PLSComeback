@@ -527,7 +527,7 @@ function App() {
 	return (
 		<>
 			<div className="text-center block m-auto">
-				<Button onClick={onExport} style={{ backgroundColor: '#d97706', color: '#fff' }} >Valider la reservation</Button>
+				<Button onClick={onExport} style={{ backgroundColor: '#d97706', color: '#fff' }} >Confirm booking</Button>
 			</div>
 			<Eventcalendar
 				themeVariant="dark"
