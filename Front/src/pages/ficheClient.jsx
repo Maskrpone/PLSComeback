@@ -177,12 +177,7 @@ function FicheClient() {
 									<td>{item.quantity}</td>
 									<td>
 										<QRCode
-											value={{
-												username: jsonCookie.username,
-												name: item.name,
-												quantity: item.quantity,
-												plannedReturnDate: item.date,
-											}}
+											value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
 											size={100}
 											fgColor={"#3f2a55"}
 											eyeColor={"#ff5c39"}
