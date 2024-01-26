@@ -37,5 +37,24 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Modifier le calendrier d'un outil
+router.put("/:name", async (req, res) => {
+  try {
+    const { name } = req.params;
+    const { calendar } = req.body;
+
+    // recherche de l'élément à l'aide de son nom
+    const updateMachine = await Machines.findOneAndUpdate(
+      { name: name },
+      { $set: { calendar: calendar } },
+      { new: true },
+    );
+
+    (!updateMachine) ? res.status(403).send("Element not found") : res.status(201).json(updateMachine);
+  } catch (error) {
+    console.error(error);
+    res.status(501).send("Internal Server Error");
+  }
+});
 
 module.exports = router;

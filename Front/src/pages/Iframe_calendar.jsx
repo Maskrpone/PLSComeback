@@ -1,32 +1,33 @@
-import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 import {
 	Button,
 	Datepicker,
 	Eventcalendar,
 	Input,
-	localeFr,
-	momentTimezone,
+	localeFr, momentTimezone,
 	Popup,
 	setOptions,
 	Snackbar,
 	Switch,
 	Textarea,
-} from "@mobiscroll/react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+} from '@mobiscroll/react';
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import "./Calendar_tools.css";
-import { jsonData } from "./Emprunt";
+import {jsonData} from "./Emprunt";
 import axios from "axios";
-import { API_IP } from "../Constants";
+import {API_IP} from "../Constants";
 import Cookies from "js-cookie";
 import { json } from "react-router-dom";
 
+
 setOptions({
 	locale: localeFr,
-	theme: "ios",
-	themeVariant: "light",
+	theme: 'ios',
+	themeVariant: 'light'
 });
 
 const now = new Date();
+
 
 function Event(id, start, end, title, description) {
 	this.id = id;
@@ -36,7 +37,7 @@ function Event(id, start, end, title, description) {
 	this.description = description;
 }
 
-function User(nameUser, firstname) {
+function User (nameUser, firstname){
 	this.nameUser = nameUser;
 	this.firstname = firstname;
 }
@@ -88,18 +89,8 @@ const defaultEvents = [
     },*/
 ];
 
-const colors = [
-	"#ffeb3c",
-	"#ff9900",
-	"#f44437",
-	"#ea1e63",
-	"#9c26b0",
-	"#3f51b5",
-	"",
-	"#009788",
-	"#4baf4f",
-	"#7e5d4e",
-];
+
+const colors = ['#ffeb3c', '#ff9900', '#f44437', '#ea1e63', '#9c26b0', '#3f51b5', '', '#009788', '#4baf4f', '#7e5d4e'];
 
 function App() {
 	const [myEvents, setMyEvents] = useState(defaultEvents);
@@ -110,16 +101,16 @@ function App() {
 	const [anchor, setAnchor] = useState(null);
 	const [start, startRef] = useState(null);
 	const [end, endRef] = useState(null);
-	const [popupEventTitle, setTitle] = useState("");
-	const [popupEventDescription, setDescription] = useState("");
+	const [popupEventTitle, setTitle] = useState('');
+	const [popupEventDescription, setDescription] = useState('');
 	const [popupEventAllDay, setAllDay] = useState(true);
 	const [popupEventDate, setDate] = useState([]);
-	const [popupEventStatus, setStatus] = useState("busy");
+	const [popupEventStatus, setStatus] = useState('busy');
 	const [mySelectedDate, setSelectedDate] = useState(now);
 	const [colorPickerOpen, setColorPickerOpen] = useState(false);
 	const [colorAnchor, setColorAnchor] = useState(null);
-	const [selectedColor, setSelectedColor] = useState("");
-	const [tempColor, setTempColor] = useState("");
+	const [selectedColor, setSelectedColor] = useState('');
+	const [tempColor, setTempColor] = useState('');
 	const [isSnackbarOpen, setSnackbarOpen] = useState(false);
 	const colorPicker = useRef();
 
@@ -128,24 +119,21 @@ function App() {
 		// Faites ce que vous voulez avec les donnÃ©es ici
 	}, []);
 
-	const myView = useMemo(
-		() => ({
-			calendar: { labels: true },
-		}),
-		[],
-	);
+	const myView = useMemo(() => ({
+		calendar: { labels: true }
+	}), []);
 
 	const colorButtons = useMemo(
 		() => [
-			"cancel",
+			'cancel',
 			{
-				text: "Set",
-				keyCode: "enter",
+				text: 'Set',
+				keyCode: 'enter',
 				handler: () => {
 					setSelectedColor(tempColor);
 					setColorPickerOpen(false);
 				},
-				cssClass: "mbsc-popup-button-primary",
+				cssClass: 'mbsc-popup-button-primary',
 			},
 		],
 		[tempColor],
@@ -154,7 +142,7 @@ function App() {
 	const colorResponsive = useMemo(
 		() => ({
 			medium: {
-				display: "anchored",
+				display: 'anchored',
 				touchUi: false,
 				buttons: [],
 			},
@@ -167,7 +155,7 @@ function App() {
 			action: () => {
 				setMyEvents((prevEvents) => [...prevEvents, undoEvent]);
 			},
-			text: "Undo",
+			text: 'Undo',
 		}),
 		[undoEvent],
 	);
@@ -177,18 +165,18 @@ function App() {
 	}, []);
 
 	const saveEvent = useCallback(() => {
-		const specificCookie = Cookies.get("user_data");
-		const jsonCookie = JSON.parse(specificCookie);
+		const specificCookie = Cookies.get('user_data');
+		const jsonCookie= JSON.parse(specificCookie);
 		const prenom = jsonCookie.prenom;
 		const nom = jsonCookie.nom;
 
 		// Nom et prénom de la personne connectée
-		let actualUser = new User(nom, prenom);
+		let actualUser = new User(nom,prenom);
 		console.log(jsonData[0].object_name);
 		const newEvent = {
 			id: tempEvent.id,
 			object_name: jsonData[0].object_name,
-			title: "" + actualUser.firstname + " " + actualUser.nameUser,
+			title: ("" + actualUser.firstname + " " + actualUser.nameUser),
 			description: popupEventDescription,
 			start: popupEventDate[0],
 			end: popupEventDate[1],
@@ -215,16 +203,7 @@ function App() {
 		setSelectedDate(popupEventDate[0]);
 		// close the popup
 		setOpen(false);
-	}, [
-		isEdit,
-		myEvents,
-		popupEventAllDay,
-		popupEventDate,
-		popupEventDescription,
-		popupEventStatus,
-		popupEventTitle,
-		tempEvent,
-	]);
+	}, [isEdit, myEvents, popupEventAllDay, popupEventDate, popupEventDescription, popupEventStatus, popupEventTitle, tempEvent]);
 
 	const deleteEvent = useCallback(
 		(event) => {
@@ -241,21 +220,21 @@ function App() {
 		setDescription(event.description);
 		setDate([event.start, event.end]);
 		setAllDay(event.allDay || false);
-		setStatus(event.status || "busy");
-		setSelectedColor(event.color || "");
+		setStatus(event.status || 'busy');
+		setSelectedColor(event.color || '');
 	}, []);
 
 	// handle popup form changes
 
 	const titleChange = useCallback((ev) => {
-		const specificCookie = Cookies.get("user_data");
-		const jsonCookie = JSON.parse(specificCookie);
+		const specificCookie = Cookies.get('user_data');
+		const jsonCookie= JSON.parse(specificCookie);
 		const prenom = jsonCookie.prenom;
 		const nom = jsonCookie.nom;
 
 		// Nom et prénom de la personne connectée
-		let actualUser = new User(nom, prenom);
-		setTitle(`${actualUser.firstname} ${actualUser.nameUser}`);
+		let actualUser = new User(nom,prenom);
+		setTitle(actualUser.firstname + " " + actualUser.nameUser);
 	}, []);
 
 	const descriptionChange = useCallback((ev) => {
@@ -289,7 +268,7 @@ function App() {
 		(args) => {
 			if (args.event.editable !== false) {
 				setEdit(true);
-				setTempEvent({ ...args.event });
+				setTempEvent({...args.event});
 				// fill popup form with event data
 				loadPopupForm(args.event);
 				setAnchor(args.domEvent.target);
@@ -326,56 +305,50 @@ function App() {
 	}, []);
 
 	// datepicker options
-	const controls = useMemo(
-		() => (popupEventAllDay ? ["date"] : ["datetime"]),
-		[popupEventAllDay],
-	);
+	const controls = useMemo(() => (popupEventAllDay ? ['date'] : ['datetime']), [popupEventAllDay]);
 	const datepickerResponsive = useMemo(
 		() =>
 			popupEventAllDay
 				? {
-						medium: {
-							controls: ["calendar"],
-							touchUi: false,
-						},
-				  }
+					medium: {
+						controls: ['calendar'],
+						touchUi: false,
+					},
+				}
 				: {
-						medium: {
-							controls: ["calendar", "time"],
-							touchUi: false,
-						},
-				  },
+					medium: {
+						controls: ['calendar', 'time'],
+						touchUi: false,
+					},
+				},
 		[popupEventAllDay],
 	);
 
 	// popup options
-	const headerText = useMemo(
-		() => (isEdit ? "Edit event" : "New Event"),
-		[isEdit],
-	);
+	const headerText = useMemo(() => (isEdit ? 'Edit event' : 'New Event'), [isEdit]);
 	const popupButtons = useMemo(() => {
 		if (isEdit) {
 			return [
-				"cancel",
+				'cancel',
 				{
 					handler: () => {
 						saveEvent();
 					},
-					keyCode: "enter",
-					text: "Save",
-					cssClass: "mbsc-popup-button-primary",
+					keyCode: 'enter',
+					text: 'Save',
+					cssClass: 'mbsc-popup-button-primary',
 				},
 			];
 		} else {
 			return [
-				"cancel",
+				'cancel',
 				{
 					handler: () => {
 						saveEvent();
 					},
-					keyCode: "enter",
-					text: "Add",
-					cssClass: "mbsc-popup-button-primary",
+					keyCode: 'enter',
+					text: 'Add',
+					cssClass: 'mbsc-popup-button-primary',
 				},
 			];
 		}
@@ -384,7 +357,7 @@ function App() {
 	const popupResponsive = useMemo(
 		() => ({
 			medium: {
-				display: "anchored",
+				display: 'anchored',
 				width: 400,
 				fullScreen: false,
 				touchUi: false,
@@ -407,7 +380,7 @@ function App() {
 
 	const openColorPicker = useCallback(
 		(ev) => {
-			selectColor(selectedColor || "");
+			selectColor(selectedColor || '');
 			setColorAnchor(ev.currentTarget);
 			setColorPickerOpen(true);
 		},
@@ -416,7 +389,7 @@ function App() {
 
 	const changeColor = useCallback(
 		(ev) => {
-			const color = ev.currentTarget.getAttribute("data-value");
+			const color = ev.currentTarget.getAttribute('data-value');
 			selectColor(color);
 			if (!colorPicker.current.s.buttons.length) {
 				setSelectedColor(color);
@@ -427,6 +400,7 @@ function App() {
 	);
 
 	const [myEvents2, setMyEvents2] = useState(defaultEvents);
+
 
 	// DÃ©placez la dÃ©finition de la fonction extractEventInfo ici
 	const extractEventInfo = (event) => {
@@ -453,25 +427,17 @@ function App() {
 		const calendarInfo = extractCalendarInfo();
 		// Convertir les donnÃ©es en format JSON
 		const jsonData = JSON.stringify(calendarInfo, null, 2);
-		console.log("GGGGGGGGGGGGGGGGGGGG");
-		console.log(jsonData);
-		console.log(calendarInfo[0]);
 		const name_object = calendarInfo[0].object_name;
 
-		// Afficher un message de confirmation Ã  l'utilisateur
-		setSnackbarOpen(true);
 		const fetchData = async () => {
 			try {
-				await axios
-					.put(`http://${API_IP}:3000/tools/` + name_object, {
-						calendar: jsonData,
+				await axios.put(`http://${API_IP}:3000/tools/` + name_object, {"calendar": jsonData})
+					.then(response => {
+						console.log('Update succeed :', response.data);
+						alert("Update succeed");
 					})
-					.then((response) => {
-						console.log("Mise à jour réussie :", response.data);
-						alert("Update successful");
-					})
-					.catch((error) => {
-						console.error("Erreur lors de la mise à jour :", error);
+					.catch(error => {
+						console.error('Update failed :', error);
 						alert("Update failed");
 					});
 			} catch (error) {
@@ -491,18 +457,21 @@ function App() {
 						plannedReturnDate: end,
 					})
 					.then((response) => {
-						console.log("Mise à jour réussie :", response.data);
+						console.log("Update succeed :", response.data);
 					})
 					.catch((error) => {
-						console.error("Erreur lors de la mise à jour :", error);
+						console.error("Update failed :", error);
 					});
 			} catch (error) {
 				console.log(error);
 			}
+
 		};
 
 		fetchData();
-		console.log("Calendrier exporté en JSON:", jsonData);
+		console.log('Calendrier exporté en JSON:', jsonData);
+
+
 	}, [extractCalendarInfo]);
 
 	/*
@@ -531,12 +500,12 @@ function App() {
 	useEffect(() => {
 		// Utilisez une fonction pour crÃ©er myEvents lorsque events change
 		const updateMyEvents = () => {
-			const specificCookie = Cookies.get("user_data");
-			const jsonCookie = JSON.parse(specificCookie);
+			const specificCookie = Cookies.get('user_data');
+			const jsonCookie= JSON.parse(specificCookie);
 			const prenom = jsonCookie.prenom;
 			const nom = jsonCookie.nom;
 
-			const newMyEvents = jsonData.map((event) => {
+			const newMyEvents = jsonData.map(event => {
 				// Vérifie si le title correspond au format "prenom nom"
 				if (event.title === prenom + " " + nom) {
 					// Met à jour la propriété editable seulement pour l'utilisateur correspondant
@@ -546,6 +515,7 @@ function App() {
 				// Aucune mise à jour nécessaire pour les autres éléments
 				return event;
 			});
+
 
 			// Mise Ã  jour de myEvents avec les nouveaux Ã©vÃ©nements
 			setMyEvents(newMyEvents);
@@ -557,12 +527,7 @@ function App() {
 	return (
 		<>
 			<div className="text-center block m-auto">
-				<Button
-					onClick={onExport}
-					style={{ backgroundColor: "#d97706", color: "#fff" }}
-				>
-					Confirm Booking
-				</Button>
+				<Button onClick={onExport} style={{ backgroundColor: '#d97706', color: '#fff' }} >Confirm booking</Button>
 			</div>
 			<Eventcalendar
 				themeVariant="dark"
@@ -593,18 +558,10 @@ function App() {
 				responsive={popupResponsive}
 			>
 				<div className="mbsc-form-group">
-					<Textarea
-						label="Description"
-						value={popupEventDescription}
-						onChange={descriptionChange}
-					/>
+					<Textarea label="Description" value={popupEventDescription} onChange={descriptionChange}/>
 				</div>
 				<div className="mbsc-form-group">
-					<Switch
-						label="All-day"
-						checked={popupEventAllDay}
-						onChange={allDayChange}
-					/>
+					<Switch label="All-day" checked={popupEventAllDay} onChange={allDayChange} />
 					<Input ref={startRef} label="Starts" />
 					<Input ref={endRef} label="Ends" />
 					<Datepicker
@@ -620,19 +577,11 @@ function App() {
 					/>
 					<div onClick={openColorPicker} className="event-color-c">
 						<div className="event-color-label">Color</div>
-						<div
-							className="event-color"
-							style={{ background: selectedColor }}
-						></div>
+						<div className="event-color" style={{ background: selectedColor }}></div>
 					</div>
 					{isEdit ? (
 						<div className="mbsc-button-group">
-							<Button
-								className="mbsc-button-block"
-								color="danger"
-								variant="outline"
-								onClick={onDeleteClick}
-							>
+							<Button className="mbsc-button-block" color="danger" variant="outline" onClick={onDeleteClick}>
 								Delete event
 							</Button>
 						</div>
@@ -656,15 +605,10 @@ function App() {
 							<div
 								key={index}
 								onClick={changeColor}
-								className={
-									"crud-color-c " + (tempColor === color ? "selected" : "")
-								}
+								className={'crud-color-c ' + (tempColor === color ? 'selected' : '')}
 								data-value={color}
 							>
-								<div
-									className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check"
-									style={{ background: color }}
-								></div>
+								<div className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check" style={{ background: color }}></div>
 							</div>
 						) : null,
 					)}
@@ -675,15 +619,10 @@ function App() {
 							<div
 								key={index}
 								onClick={changeColor}
-								className={
-									"crud-color-c " + (tempColor === color ? "selected" : "")
-								}
+								className={'crud-color-c ' + (tempColor === color ? 'selected' : '')}
 								data-value={color}
 							>
-								<div
-									className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check"
-									style={{ background: color }}
-								></div>
+								<div className="crud-color mbsc-icon mbsc-font-icon mbsc-icon-material-check" style={{ background: color }}></div>
 							</div>
 						) : null,
 					)}
@@ -693,8 +632,7 @@ function App() {
 				isOpen={isSnackbarOpen}
 				message="Event deleted"
 				button={snackbarButton}
-				onClose={handleSnackbarClose}
-			/>
+				onClose={handleSnackbarClose} />
 		</>
 	);
 }

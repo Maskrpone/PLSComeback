@@ -76,15 +76,17 @@ function FicheClient() {
 		console.log(items);
 
 		// Filter data based on type and update state accordingly, also add the name of the item
-		const type0FilteredData = Object.values(items).filter(
+		let type0FilteredData = Object.values(items).filter(
 			(item) => item.type === 0,
 		);
 		const type1FilteredData = Object.values(items).filter(
 			(item) => item.type === 1,
 		);
-		const type2FilteredData = Object.values(items).filter(
+		let type2FilteredData = Object.values(items).filter(
 			(item) => item.type === 2,
 		);
+
+		// type0FilteredData.filter((item) => item.realReturnDate === null);
 
 		// Loop through the filtered data and add the name of the item found in items
 		for (const item of type0FilteredData) {
@@ -94,6 +96,13 @@ function FicheClient() {
 			);
 			item.name = item_name;
 		}
+
+		type0FilteredData = type0FilteredData.filter(
+			(item) => item.realReturnDate === null,
+		);
+		type2FilteredData = type2FilteredData.filter(
+			(item) => item.realReturnDate === null,
+		);
 
 		for (const item of type1FilteredData) {
 			// find item._id in items and add the name to the object
@@ -114,6 +123,8 @@ function FicheClient() {
 		setType0Data(type0FilteredData);
 		setType1Data(type1FilteredData);
 		setType2Data(type2FilteredData);
+
+		console.log(type0Data);
 	}
 
 	return (
@@ -172,24 +183,24 @@ function FicheClient() {
 							</tr>
 						</thead>
 						<tbody>
-						{type0Data.map((item, index) => (
-  <tr key={index}>
+							{type0Data.map((item, index) => (
+								<tr key={index}>
 									<td>{item.date.split("T")[0]}</td>
 									<td>{item.name}</td>
 									<td>{item.quantity}</td>
 
 									<td onClick={() => setIsFullscreen(true)}>
-      <QRCode
-        value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
-        size={isFullscreen ? window.innerWidth : 100}
-        fgColor={"#3f2a55"}
-        eyeColor={"#ff5c39"}
-        enableCORS={true}
-        qrStyle="dots"
-        eyeRadius={10}
-        id={"QR"}
-      />
-    </td>
+										<QRCode
+											value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
+											size={isFullscreen ? window.innerWidth : 100}
+											fgColor={"#3f2a55"}
+											eyeColor={"#ff5c39"}
+											enableCORS={true}
+											qrStyle="dots"
+											eyeRadius={10}
+											id={"QR"}
+										/>
+									</td>
 								</tr>
 							))}
 						</tbody>
@@ -204,7 +215,7 @@ function FicheClient() {
 								<th>DATE</th>
 								<th>NAME</th>
 								<th>QUANTITY</th>
-								{/* <th>QR CODE</th> */}
+								<th>QR CODE</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -221,15 +232,10 @@ function FicheClient() {
 											<td>{item.date.split("T")[0]}</td>
 											<td>{item.name}</td>
 											<td>{item.quantity}</td>
-											{/* <td>
+											<td onClick={() => setIsFullscreen(true)}>
 												<QRCode
-													value={{
-														username: jsonCookie.username,
-														name: item.name,
-														quantity: item.quantity,
-														plannedReturnDate: item.date,
-													}}
-													size={100}
+													value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
+													size={isFullscreen ? window.innerWidth : 100}
 													fgColor={"#3f2a55"}
 													eyeColor={"#ff5c39"}
 													enableCORS={true}
@@ -237,48 +243,46 @@ function FicheClient() {
 													eyeRadius={10}
 													id={"QR"}
 												/>
-											</td> */}
-											
+											</td>
+
 											{isFullscreen && (
-  <div
-    style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100vw',
-      height: '100vh',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      display: 'flex',
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      zIndex: 1000,
-    }}
-    onClick={() => setIsFullscreen(false)}
-  >
-    <QRCode
-      value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
-      size={window.innerWidth}
-      fgColor={"#3f2a55"}
-      eyeColor={"#ff5c39"}
-      enableCORS={true}
-      qrStyle="dots"
-      eyeRadius={10}
-      id={"QR"}
-    />
-  </div>
-)}
+												<div
+													style={{
+														position: "fixed",
+														top: 0,
+														left: 0,
+														width: "100vw",
+														height: "100vh",
+														backgroundColor: "rgba(0, 0, 0, 0.5)",
+														display: "flex",
+														justifyContent: "flex-start",
+														alignItems: "center",
+														zIndex: 1000,
+													}}
+													onClick={() => setIsFullscreen(false)}
+												>
+													<QRCode
+														value={`http:/10.224.1.166:3000/pages/ValidateBooking/?username=${jsonCookie.username}&name=${item.name}&quantity=${item.quantity}&plannedReturnDate=${item.date}`}
+														size={window.innerWidth}
+														fgColor={"#3f2a55"}
+														eyeColor={"#ff5c39"}
+														enableCORS={true}
+														qrStyle="dots"
+														eyeRadius={10}
+														id={"QR"}
+													/>
+												</div>
+											)}
 										</tr>
 									)
 								),
 							)}
 						</tbody>
 					</table>
-					
 				</div>
 			</div>
 			<Footer />
 		</>
-		
 	);
 }
 
