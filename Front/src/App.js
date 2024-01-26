@@ -8,6 +8,7 @@ import PageEmprunt from "./pages/page_emprunt";
 import Machines from "./pages/machines";
 import Login from "./pages/Login"
 import Signup from "./pages/SignUp"
+import ValidateBooking from "./pages/ValidateBooking"
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/pages/signup" element={<Signup />} />
                 <Route path="/pages/ficheClient" element={<FicheClient/>} />
                 <Route path="/pages/Emprunt" element={<Emprunt/>} />
+                <Route path="/pages/ValidateBooking" element={<ValidateBooking/>} />
                 <Route path="/pages/pages_components" element={<PageComponents/>} />
                 <Route path="/pages/pages_emprunt" element={<PageEmprunt/>} />
                 <Route path="/pages/machines" element={<Machines/>} />
