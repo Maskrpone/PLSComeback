@@ -1,6 +1,7 @@
 # PlsComeBack
 
 ![Logo of PlsComeBack](./logo.png)
+
 **PlsComeBack** is a fully-featured web application
 that is meant to help manage **Fablabs**.
 
